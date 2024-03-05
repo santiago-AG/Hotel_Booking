@@ -40,18 +40,43 @@ public class Menu extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Registro.setText("Registro");
+        Registro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegistroActionPerformed(evt);
+            }
+        });
         jPanel1.add(Registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 110, -1));
 
         Reservas.setText("Reservas");
+        Reservas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReservasActionPerformed(evt);
+            }
+        });
         jPanel1.add(Reservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 110, -1));
 
         Historial.setText("Historial");
+        Historial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HistorialActionPerformed(evt);
+            }
+        });
         jPanel1.add(Historial, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 110, -1));
 
         CheckIn.setText("Check In");
+        CheckIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckInActionPerformed(evt);
+            }
+        });
         jPanel1.add(CheckIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 110, -1));
 
         CheckOut.setText("Check Out");
+        CheckOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckOutActionPerformed(evt);
+            }
+        });
         jPanel1.add(CheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 110, -1));
 
         jLabel1.setText("Hotel California");
@@ -76,6 +101,33 @@ public class Menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void RegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistroActionPerformed
+        Registro registro = new Registro();
+        registro.setVisible(true);
+        
+    }//GEN-LAST:event_RegistroActionPerformed
+
+    private void ReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservasActionPerformed
+        Reservaciones reservas = new Reservaciones();
+        reservas.setVisible(true);
+        
+    }//GEN-LAST:event_ReservasActionPerformed
+
+    private void HistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HistorialActionPerformed
+        Historico historico = new Historico();
+        historico.setVisible(true);
+    }//GEN-LAST:event_HistorialActionPerformed
+
+    private void CheckInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckInActionPerformed
+        Check_In checkin = new Check_In();
+        checkin.setVisible(true);
+    }//GEN-LAST:event_CheckInActionPerformed
+
+    private void CheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckOutActionPerformed
+        Check_Out checkout = new Check_Out();
+        checkout.setVisible(true);
+    }//GEN-LAST:event_CheckOutActionPerformed
 
     /**
      * @param args the command line arguments

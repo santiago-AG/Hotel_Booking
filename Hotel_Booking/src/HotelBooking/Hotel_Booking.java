@@ -4,6 +4,9 @@
  */
 package HotelBooking;
 
+import GUI.*;
+
+
 /**
  *
  * @author santi
@@ -14,6 +17,8 @@ public class Hotel_Booking {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Home home = new Home();
+        home.setVisible(true);
         // TODO code application logic here
     }
     
