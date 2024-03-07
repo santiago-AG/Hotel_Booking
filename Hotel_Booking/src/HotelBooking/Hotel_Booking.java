@@ -4,6 +4,7 @@
  */
 package HotelBooking;
 
+import EDD.AVLTree;
 import GUI.*;
 
 
@@ -17,9 +18,27 @@ public class Hotel_Booking {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        
+        
         Home home = new Home();
         home.setVisible(true);
-        // TODO code application logic here
+
+
+        AVLTree tree = new AVLTree();
+  
+        /* Constructing tree given in the above figure */
+        tree.setRoot(tree.insert(tree.getRoot(), 10)); 
+        tree.setRoot(tree.insert(tree.getRoot(), 20)); 
+        tree.setRoot(tree.insert(tree.getRoot(), 30)); 
+        tree.setRoot(tree.insert(tree.getRoot(), 40)); 
+        tree.setRoot(tree.insert(tree.getRoot(), 50)); 
+        tree.setRoot(tree.insert(tree.getRoot(), 25)); 
+  
+
+        System.out.println("Preorder traversal" + 
+                        " of constructed tree is : "); 
+        tree.preOrder(tree.getRoot()); 
     }
     
 }
