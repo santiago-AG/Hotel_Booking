@@ -10,10 +10,10 @@ package EDD;
  */
 public class AVLTree <T> {
 
-//    public AVLTree(Leaf root) {
+//    public AVLTree(LNode root) {
 //        this.root = root;
 //    }
-    private Leaf root;
+    private LNode root;
     
     
     /**
@@ -26,7 +26,7 @@ public class AVLTree <T> {
     /**
      * Utility function to get the height of the tree 
      **/
-    public int height(Leaf N) { 
+    public int height(LNode N) { 
         if (N == null) 
             return 0; 
   
@@ -43,56 +43,51 @@ public class AVLTree <T> {
     /**
      * Utility function to right rotate subtree rooted with y 
      **/
-    public Leaf rightRotate(Leaf y) { 
-        Leaf x = y.getLeft(); 
-        Leaf T2 = x.getRight(); 
-        
-        // Perform rotation 
+    public LNode rightRotate(LNode y) { 
+        LNode x = y.getLeft(); 
+        LNode T2 = x.getRight(); 
+        //Rotation 
         x.setRight(y); 
         y.setLeft(T2); 
-  
-        // Update heights 
+        //Update heights 
         y.setHeight(max( height(y.getLeft()), height(y.getRight())) + 1); 
-        x.setHeight(max( height(x.getLeft()), height(x.getRight())) + 1); 
-  
-        // Return new root 
+        x.setHeight(max( height(x.getLeft()), height(x.getRight())) + 1);
+        //Return new root 
         return x; 
     } 
     
     /**
      * Utility function to left rotate subTree rooted with x 
      **/
-    public Leaf leftRotate(Leaf x) { 
-        Leaf y = x.getRight(); 
-        Leaf T2 = y.getLeft(); 
-  
-        // Perform rotation 
+    public LNode leftRotate(LNode x) { 
+        LNode y = x.getRight(); 
+        LNode T2 = y.getLeft();
+        //Rotation 
         y.setLeft(x); 
         x.setRight(T2); 
-  
-        //  Update heights 
+        //Update heights 
         x.setHeight(max(height(x.getLeft()), height(x.getRight())) + 1); 
         y.setHeight(max(height(y.getLeft()), height(y.getRight())) + 1); 
-  
         // Return new root 
         return y; 
     } 
     
     /** 
-     * Get Balance factor of Leaf L 
+     * Get Balance factor of LNode L 
      * */
-    public int getBalance(Leaf L) { 
-        if (L == null) 
+    public int getBalance(LNode L) { 
+        if (L == null){
             return 0; 
-  
+        } 
         return height(L.getLeft()) - height(L.getRight()); 
     }
     
-    public Leaf insert(Leaf leaf, int key) { 
+    public LNode insert(LNode leaf, int key) { 
   
-        /* 1.  Perform the normal BST insertion */
-        if (leaf == null) 
-            return (new Leaf(key)); 
+        //Perform the normal BST insertion
+        if (leaf == null){ 
+            return (new LNode(key));
+        }
   
         if (key < leaf.getKey()){ 
             leaf.setLeft(insert(leaf.getLeft(), key));  
@@ -102,16 +97,16 @@ public class AVLTree <T> {
             return leaf;
         }    
   
-        /* 2. Update height of this ancestor leaf */
+        //Update height ancestor leaf
         leaf.setHeight(1 + max(height(leaf.getLeft()), height(leaf.getRight()))); 
-  
-        /* 3. Get the balance factor of this ancestor 
-              leaf to check whether this leaf became 
-              unbalanced */
+        
+        return rebalance(leaf,key);    
+    } 
+    
+    public LNode rebalance(LNode leaf, int key){
         int balance = getBalance(leaf); 
-  
-        // If this leaf becomes unbalanced, then there 
-        // are 4 cases Left Left Case 
+ 
+        //Left Left Case 
         if (balance > 1 && key < leaf.getLeft().getKey()){
             return rightRotate(leaf); 
         } 
@@ -133,34 +128,58 @@ public class AVLTree <T> {
             return leftRotate(leaf); 
         } 
   
-        /* return the (unchanged) leaf pointer */
-        return leaf; 
-    } 
+        //Return leaf pointer
+        return leaf;
+    }
         
     /**
      * @return the root of AVLTree
      */
-    public Leaf getRoot() {
+    public LNode getRoot() {
         return root;
     }
     
     /**
      * @param Root the Root to set
      */
-    public void setRoot(Leaf root) {
+    public void setRoot(LNode root) {
         this.root = root;
     }
     
-    // A utility function to print preorder traversal 
-    // of the tree. 
-    // The function also prints height of every leaf 
-    public void preOrder(Leaf leaf) { 
+    // Utility function to print preorder of Tree. 
+    public String preOrder(LNode leaf) { 
+        String toPrint = "";
         if (leaf != null) { 
-            System.out.print(leaf.getKey() + " "); 
-            preOrder(leaf.getLeft()); 
-            preOrder(leaf.getRight()); 
-        } 
+            toPrint += (leaf.getKey()) + " "; 
+            toPrint += preOrder(leaf.getLeft()); 
+            toPrint += preOrder(leaf.getRight()); 
+        }
+        return toPrint;
     }
+    
+    public String inOrder(LNode leaf) { 
+        String toPrint = "";
+        if (leaf != null) { 
+            toPrint += inOrder(leaf.getLeft()); 
+            toPrint += (leaf.getKey()) + " "; 
+            toPrint += inOrder(leaf.getRight()); 
+        }
+        return toPrint;
+    }
+    
+    public String postOrder(LNode leaf) { 
+        String toPrint = "";
+        if (leaf != null) { 
+            toPrint += postOrder(leaf.getLeft()); 
+            toPrint += postOrder(leaf.getRight()); 
+            toPrint += (leaf.getKey()) + " "; 
+        }
+        return toPrint;
+    }
+    
+    
+    
+    
     
     
 }

@@ -4,7 +4,7 @@
  */
 package HotelBooking;
 
-import EDD.AVLTree;
+import EDD.*;
 import GUI.*;
 
 
@@ -21,24 +21,27 @@ public class Hotel_Booking {
         
         
         
-        Home home = new Home();
-        home.setVisible(true);
+//        Home home = new Home();
+//        home.setVisible(true);
 
 
         AVLTree tree = new AVLTree();
   
         /* Constructing tree given in the above figure */
+        tree.setRoot(tree.insert(tree.getRoot(), 1)); 
+        tree.setRoot(tree.insert(tree.getRoot(), 15)); 
+        tree.setRoot(tree.insert(tree.getRoot(), 5)); 
+        tree.setRoot(tree.insert(tree.getRoot(), 11)); 
         tree.setRoot(tree.insert(tree.getRoot(), 10)); 
-        tree.setRoot(tree.insert(tree.getRoot(), 20)); 
-        tree.setRoot(tree.insert(tree.getRoot(), 30)); 
-        tree.setRoot(tree.insert(tree.getRoot(), 40)); 
-        tree.setRoot(tree.insert(tree.getRoot(), 50)); 
-        tree.setRoot(tree.insert(tree.getRoot(), 25)); 
+        tree.setRoot(tree.insert(tree.getRoot(), 16)); 
+        tree.setRoot(tree.insert(tree.getRoot(), 4)); 
+        tree.setRoot(tree.insert(tree.getRoot(), 6)); 
+        tree.setRoot(tree.insert(tree.getRoot(), 14)); 
+        tree.setRoot(tree.insert(tree.getRoot(), 12)); 
+        
+        System.out.println(tree.getRoot().getKey());
   
-
-        System.out.println("Preorder traversal" + 
-                        " of constructed tree is : "); 
-        tree.preOrder(tree.getRoot()); 
+        System.out.println(tree.inOrder(tree.getRoot())); 
     }
     
 }

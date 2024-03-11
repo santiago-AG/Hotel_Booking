@@ -8,17 +8,17 @@ package EDD;
  *
  * @author santi
  */
-public class Leaf {
-    private Leaf right;
-    private Leaf left;
-    private int height;
+public class LNode {
     private int key;
+    private int height;
+    private LNode left;
+    private LNode right;
 
-    public Leaf(int key) {
+    public LNode(int key) {
         this.key = key;
         this.height = 1;
-        this.right = null;
         this.left = null;
+        this.right = null;
     }
     
     public boolean isFull(){
@@ -37,19 +37,19 @@ public class Leaf {
         return (getRight()!=null);
     }
     
-    public Leaf getRight() {
+    public LNode getRight() {
         return right;
     }
 
-    public void setRight(Leaf right) {
+    public void setRight(LNode right) {
         this.right = right;
     }
 
-    public Leaf getLeft() {
+    public LNode getLeft() {
         return left;
     }
 
-    public void setLeft(Leaf left) {
+    public void setLeft(LNode left) {
         this.left = left;
     }
 
