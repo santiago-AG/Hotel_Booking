@@ -131,6 +131,20 @@ public class AVLTree <T> {
         //Return leaf pointer
         return leaf;
     }
+    
+    public LNode search(int data, LNode root){
+        if (root!=null) {
+            if (root.getKey()>data) {
+                return search(data,root.getLeft());
+            }else if (root.getKey()<data) {
+                return search(data,root.getRight());   
+            }else{
+                return root;
+            }
+        }else{  
+        return null;
+        }
+    }
         
     /**
      * @return the root of AVLTree
