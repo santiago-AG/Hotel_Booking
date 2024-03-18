@@ -8,17 +8,75 @@ package EDD;
  *
  * @author santi
  */
-public class LNode {
-    private int key;
-    private int height;
-    private LNode left;
-    private LNode right;
+public class LNode{
+    protected int key;
+    protected int height;
+    protected LNode left;
+    protected LNode right;
 
     public LNode(int key) {
         this.key = key;
         this.height = 1;
+        this.key = key;
         this.left = null;
         this.right = null;
+    }
+
+
+    /**
+     * @return the key
+     */
+    public int getKey() {
+        return key;
+    }
+
+    /**
+     * @param key the key to set
+     */
+    public void setKey(int key) {
+        this.key = key;
+    }
+
+    /**
+     * @return the height
+     */
+    public int getHeight() {
+        return height;
+    }
+
+    /**
+     * @param height the height to set
+     */
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    /**
+     * @return the left
+     */
+    public LNode getLeft() {
+        return left;
+    }
+
+    /**
+     * @param left the left to set
+     */
+    public void setLeft(LNode left) {
+        this.left = left;
+    }
+
+    /**
+     * @return the right
+     */
+    public LNode getRight() {
+        return right;
+    }
+
+    /**
+     * @param right the right to set
+     */
+    public void setRight(LNode right) {
+        this.right = right;
     }
     
     public boolean isFull(){
@@ -37,37 +95,7 @@ public class LNode {
         return (getRight()!=null);
     }
     
-    public LNode getRight() {
-        return right;
-    }
-
-    public void setRight(LNode right) {
-        this.right = right;
-    }
-
-    public LNode getLeft() {
-        return left;
-    }
-
-    public void setLeft(LNode left) {
-        this.left = left;
-    }
-
-    public int getKey() {
-        return key;
-    }
-
-    public void setKey(int key) {
-        this.key = key;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
+    
     
     
 }
