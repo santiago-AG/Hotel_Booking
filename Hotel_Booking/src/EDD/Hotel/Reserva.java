@@ -11,7 +11,7 @@ import EDD.LNode;
  * @author santi
  */
 public class Reserva extends LNode{
-    private String nombre;
+    protected String nombre;
     protected String apellido;
     protected String email;
     protected String genero;
@@ -129,4 +129,18 @@ public class Reserva extends LNode{
     public void setSalida(String salida) {
         this.salida = salida;
     }   
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 }

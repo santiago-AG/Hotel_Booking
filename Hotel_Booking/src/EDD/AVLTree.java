@@ -10,7 +10,7 @@ import EDD.Hotel.Reserva;
  *
  * @author santi
  */
-public class AVLTree <T> {
+public class AVLTree{
 
 //    public AVLTree(LNode root) {
 //        this.root = root;

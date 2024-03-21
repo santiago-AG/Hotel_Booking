@@ -76,8 +76,8 @@ public class List {
     /**
      * Creates a node and adds it to the end of List
      */
-    public void insertLast(Object x){
-        Node pNew= new Node(x);
+    public void insertLast(Node pNew){
+        //Node pNew= new Node(x);
         if (isEmpty()){
             setpFirst(pNew);
             setpLast(pNew);
@@ -91,8 +91,8 @@ public class List {
     /**
      * Creates a node and adds it to the start of List
      */
-    public void insertFirst(Object x){
-        Node pNew=new Node(x);
+    public void insertFirst(Node pNew){
+        //Node pNew=new Node(x);
         if (isEmpty()){
              pFirst=pNew;
              pLast=pNew;

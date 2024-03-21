@@ -5,6 +5,8 @@
 package Main;
 
 import EDD.*;
+import EDD.Hotel.Habitacion;
+import EDD.Hotel.Reserva;
 import GUI.*;
 
 
@@ -19,7 +21,14 @@ public class Main {
      */
     public static void main(String[] args) {
         ExcelManager manager = new ExcelManager();
-        manager.readReservas();
+        LNode res = manager.getReservas().getRoot();
+        System.out.println(res);
+        //Reserva resr = (Reserva) res;
+        Reserva cliente = (Reserva) manager.getReservas().search(100, manager.getReservas().getRoot());
+        System.out.println(cliente);
+        //System.out.println(cliente);
+        
+        
     }
     
 }

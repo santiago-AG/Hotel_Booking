@@ -14,7 +14,14 @@ import java.util.Scanner;
  *
  * @author santi
  */
-public class ExcelManager {    
+public class ExcelManager {
+    protected AVLTree reservas;
+    protected AVLTree hab_historico;
+
+    public ExcelManager() {
+        this.reservas = this.readReservas();
+        this.hab_historico = this.readHabitaciones();
+    }
  
     public AVLTree readReservas(){
         try {
@@ -52,7 +59,8 @@ public class ExcelManager {
                 String data = myReader.nextLine();
                 String[] cliente = data.split(",");
                 if (!cliente[0].contains("num")) {
-                    Habitaciones habitacion = new Habitaciones(Integer.parseInt(cliente[0]),cliente[1],Integer.parseInt(cliente[2]));
+                    Habitacion habitacion = new Habitacion(Integer.parseInt(cliente[0]),cliente[1],Integer.parseInt(cliente[2]));
+//                    System.out.println(habitacion);
                     tree.setRoot(tree.insertNode(tree.getRoot(), habitacion));
                 }
             }
@@ -65,7 +73,7 @@ public class ExcelManager {
         }
     }
     
-    public void readHistorico(){
+    public AVLTree readHistorico(AVLTree tree){
         try {
             File csv = new File("DataFiles/Historico.csv");
             Scanner myReader = new Scanner(csv);
@@ -76,12 +84,19 @@ public class ExcelManager {
                 if (!cliente[0].contains("ci")) {
                     int ci = Integer.parseInt(cliente[0].replace(".",""));
                     Historico historico = new Historico(ci,cliente[1],cliente[2],cliente[3],cliente[4],cliente[5],Integer.parseInt(cliente[6]));
+                    
+                    //casteo de LNode a Habitacion via 
+                    LNode room = tree.search(historico.getNum_hab(), tree.getRoot());
+                    //System.out.println(room.getKey());
+                    
                 }
             }
             myReader.close();
+            return tree;
         }catch (Exception e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
+            return null;
         }
     }
     
@@ -106,6 +121,35 @@ public class ExcelManager {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
+    }
+    
+    
+    /**
+     * @return the reservas
+     */
+    public AVLTree getReservas() {
+        return reservas;
+    }
+
+    /**
+     * @param reservas the reservas to set
+     */
+    public void setReservas(AVLTree reservas) {
+        this.reservas = reservas;
+    }
+
+    /**
+     * @return the hab_historico
+     */
+    public AVLTree getHab_historico() {
+        return hab_historico;
+    }
+
+    /**
+     * @param hab_historico the hab_historico to set
+     */
+    public void setHab_historico(AVLTree hab_historico) {
+        this.hab_historico = hab_historico;
     }
     
     

@@ -10,16 +10,16 @@ import EDD.*;
  *
  * @author santi
  */
-public class Habitaciones extends LNode {
+public class Habitacion extends LNode {
     protected String tipo_hab;
     protected int piso;
     protected List huespedes;
 
-    public Habitaciones(int num_hab, String tipo_hab, int piso) {
+    public Habitacion(int num_hab, String tipo_hab, int piso) {
         super(num_hab);
         this.tipo_hab = tipo_hab;
         this.piso = piso;
-        this.huespedes = null;
+        this.huespedes = new List();
     }
     
     /**
