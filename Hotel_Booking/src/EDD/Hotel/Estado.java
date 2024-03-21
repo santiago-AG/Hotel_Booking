@@ -26,6 +26,17 @@ public class Estado {
         this.celular = celular;
         this.llegada = llegada;
     }
+    
+    public Estado(int num_hab) {
+        this.num_hab = num_hab;
+        this.name = null;
+        this.apellido = null;
+        this.email = null;
+        this.genero = null;
+        this.celular = null;
+        this.llegada = null;
+    }
+
 
     /**
      * @return the num_hab

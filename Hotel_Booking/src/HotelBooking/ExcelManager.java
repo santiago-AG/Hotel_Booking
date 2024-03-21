@@ -90,7 +90,7 @@ public class ExcelManager {
             File csv = new File("DataFiles/Estado.csv");
             Scanner myReader = new Scanner(csv);
             
-            AVLTree tree = new AVLTree();
+            HashTable table = new HashTable(300);
             
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
@@ -98,6 +98,7 @@ public class ExcelManager {
                 if (!cliente[0].contains("num")&&(cliente[0]!="")) {
                     System.out.println(cliente[0]);
                     Estado estado = new Estado(Integer.parseInt(cliente[0]),cliente[1],cliente[2],cliente[3],cliente[4],cliente[5],cliente[6]);
+                    table.insertarEstado(estado);
                 }
             }
             myReader.close();
