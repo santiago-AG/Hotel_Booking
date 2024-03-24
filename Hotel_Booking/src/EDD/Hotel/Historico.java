@@ -76,4 +76,10 @@ public class Historico<T> extends Node<T>{
         this.num_hab = num_hab;
     }
     
+    @Override
+    public String toCSV(){
+        String toPrint = String.valueOf(getData()) + "," + getNombre() + "," + getApellido() + "," + getEmail()+ "," + getGenero()+ "," +getLlegada()+ "," +getNum_hab();
+        return toPrint;
+    }
+    
 }

@@ -242,6 +242,16 @@ public class AVLTree{
         return toPrint;
     }
     
+    public String CSVinOrder(LNode root) { 
+        String toPrint = "";
+        if (root != null) { 
+            toPrint += CSVinOrder(root.getLeft());
+            toPrint += (root.toCSV()) + "\n"; 
+            toPrint += CSVinOrder(root.getRight()); 
+        }
+        return toPrint;
+    }
+    
     
     
     

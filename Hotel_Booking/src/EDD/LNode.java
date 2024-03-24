@@ -95,6 +95,13 @@ public class LNode{
         return (getRight()!=null);
     }
     
+    public String toCSV(){
+        String toPrint;
+        toPrint=String.valueOf(getKey());
+        
+        return toPrint;
+    }
+    
     
     
     

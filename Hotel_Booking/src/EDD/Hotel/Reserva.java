@@ -144,4 +144,10 @@ public class Reserva extends LNode{
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    @Override
+    public String toCSV(){
+        String toPrint =String.valueOf(getKey()) + "," + getNombre() + "," + getApellido() + "," + getEmail()+ "," + getTipo_hab()+ "," +getCelular()+ "," +getLlegada()+ "," +getSalida();
+        return toPrint;
+    }
 }

@@ -54,4 +54,20 @@ public class Habitacion extends LNode {
         this.piso = piso;
     }
     
+    @Override
+    public String toCSV(){
+        String toPrint="";
+        Node aux = getHuespedes().getpFirst();
+        
+        while(aux!= null){
+            if (aux.getpNext()!=null) {    
+            toPrint+=aux.toCSV()+"\n";    
+            }else{
+            toPrint+=aux.toCSV();  
+            }
+            aux=aux.getpNext();
+        }
+        return toPrint;
+    }
+
 }

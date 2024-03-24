@@ -11,7 +11,9 @@ import EDD.Hotel.Estado;
 import EDD.Hotel.Habitacion;
 import EDD.*;
 import java.io.File;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -184,6 +186,50 @@ public class Manager {
         Node pNew = new Historico(0,"a","a","a","a","a",0);
         Habitacion hab = (Habitacion) hab_historico.search(0, hab_historico.getRoot());
         hab.getHuespedes().insertLastN(pNew);
+    }
+    
+    public void write_Reserva(){
+        String info = "ci,primer_nombre,segundo_nombre,email,genero,tipo_hab,celular,llegada,salida\n";
+        String path = "test/reserva.csv";
+        info+=this.getReservas().CSVinOrder(this.getReservas().getRoot());
+        
+        
+        try{
+            File file = new File(path);
+            PrintWriter pw = new PrintWriter(file);
+            pw.print(info);
+            pw.close(); 
+            JOptionPane.showMessageDialog(null, "El archivo ha sido guardado de forma exitosa");
+        }catch (Exception e){
+            
+        }
+                
+    }
+    
+    public void write_Historico(){
+        String info = "ci,primer_nombre,apellido,email,genero,llegada,num_hab\n";
+        String path = "test/historico.csv";
+        info+=this.getHab_historico().CSVinOrder(this.getHab_historico().getRoot());
+        
+        String toPrint = "";
+        String[] historial = info.split("\n");
+        for (int i = 0; i < historial.length; i++) {
+            if (!historial[i].isBlank()) {
+                toPrint+=historial[i]+"\n";
+            }   
+        }
+                
+        
+        try{
+            File file = new File(path);
+            PrintWriter pw = new PrintWriter(file);
+            pw.print(toPrint);
+            pw.close(); 
+            JOptionPane.showMessageDialog(null, "El archivo ha sido guardado de forma exitosa");
+        }catch (Exception e){
+            
+        }
+                
     }
     
     
