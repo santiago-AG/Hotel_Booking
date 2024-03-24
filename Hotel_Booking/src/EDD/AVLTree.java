@@ -4,6 +4,8 @@
  */
 package EDD;
 
+import EDD.Hotel.Reserva;
+
 /**
  *
  * @author santi
@@ -82,54 +84,117 @@ public class AVLTree <T> {
         return height(L.getLeft()) - height(L.getRight()); 
     }
     
-    public LNode insert(LNode leaf, int key) { 
+    public LNode insert(LNode root, int key) { 
   
         //Perform the normal BST insertion
-        if (leaf == null){ 
+        if (root == null){ 
             return (new LNode(key));
         }
   
-        if (key < leaf.getKey()){ 
-            leaf.setLeft(insert(leaf.getLeft(), key));  
-        }else if (key > leaf.getKey()){ 
-            leaf.setRight(insert(leaf.getRight(), key)); 
+        if (key < root.getKey()){ 
+            root.setLeft(insert(root.getLeft(), key));  
+        }else if (key > root.getKey()){ 
+            root.setRight(insert(root.getRight(), key)); 
         }else{ // Duplicate keys not allowed 
-            return leaf;
+            return root;
         }    
   
-        //Update height ancestor leaf
-        leaf.setHeight(1 + max(height(leaf.getLeft()), height(leaf.getRight()))); 
+        //Update height ancestor root
+        root.setHeight(1 + max(height(root.getLeft()), height(root.getRight()))); 
         
-        return rebalance(leaf,key);    
+        return rebalance(root,key);    
     } 
     
-    public LNode rebalance(LNode leaf, int key){
-        int balance = getBalance(leaf); 
+    public LNode rebalance(LNode root, int key){
+        int balance = getBalance(root); 
  
         //Left Left Case 
-        if (balance > 1 && key < leaf.getLeft().getKey()){
-            return rightRotate(leaf); 
+        if (balance > 1 && key < root.getLeft().getKey()){
+            return rightRotate(root); 
         } 
   
         // Right Right Case 
-        if (balance < -1 && key > leaf.getRight().getKey()){ 
-            return leftRotate(leaf); 
+        if (balance < -1 && key > root.getRight().getKey()){ 
+            return leftRotate(root); 
         }
   
         // Left Right Case 
-        if (balance > 1 && key > leaf.getLeft().getKey()) { 
-            leaf.setLeft(leftRotate(leaf.getLeft())); 
-            return rightRotate(leaf); 
+        if (balance > 1 && key > root.getLeft().getKey()) { 
+            root.setLeft(leftRotate(root.getLeft())); 
+            return rightRotate(root); 
         } 
   
         // Right Left Case 
-        if (balance < -1 && key < leaf.getRight().getKey()) { 
-            leaf.setRight(rightRotate(leaf.getRight())); 
-            return leftRotate(leaf); 
+        if (balance < -1 && key < root.getRight().getKey()) { 
+            root.setRight(rightRotate(root.getRight())); 
+            return leftRotate(root); 
         } 
   
-        //Return leaf pointer
-        return leaf;
+        //Return root pointer
+        return root;
+    }
+    
+    public LNode insertNode(LNode root, LNode key) { 
+  
+        //Perform the normal BST insertion
+        if (root == null){ 
+            return key;
+        }
+  
+        if (key.getKey() < root.getKey()){ 
+            root.setLeft(insert(root.getLeft(), key.getKey()));  
+        }else if (key.getKey() > root.getKey()){ 
+            root.setRight(insert(root.getRight(), key.getKey())); 
+        }else{ // Duplicate keys not allowed 
+            return root;
+        }    
+  
+        //Update height ancestor root
+        root.setHeight(1 + max(height(root.getLeft()), height(root.getRight()))); 
+        
+        return rebalanceNode(root,key);    
+    } 
+    public LNode rebalanceNode(LNode root, LNode key){
+        int balance = getBalance(root); 
+ 
+        //Left Left Case 
+        if (balance > 1 && key.getKey() < root.getLeft().getKey()){
+            return rightRotate(root); 
+        } 
+  
+        // Right Right Case 
+        if (balance < -1 && key.getKey() > root.getRight().getKey()){ 
+            return leftRotate(root); 
+        }
+  
+        // Left Right Case 
+        if (balance > 1 && key.getKey() > root.getLeft().getKey()) { 
+            root.setLeft(leftRotate(root.getLeft())); 
+            return rightRotate(root); 
+        } 
+  
+        // Right Left Case 
+        if (balance < -1 && key.getKey() < root.getRight().getKey()) { 
+            root.setRight(rightRotate(root.getRight())); 
+            return leftRotate(root); 
+        } 
+  
+        //Return root pointer
+        return root;
+    }
+    
+    public LNode search(int data, LNode root){
+        if (root!=null) {
+            if (root.getKey()>data) {
+                return search(data,root.getLeft());
+            }else if (root.getKey()<data) {
+                return search(data,root.getRight());   
+            }else{
+                return root;
+            }
+        }else{  
+        return null;
+        }
     }
         
     /**
@@ -147,32 +212,32 @@ public class AVLTree <T> {
     }
     
     // Utility function to print preorder of Tree. 
-    public String preOrder(LNode leaf) { 
+    public String preOrder(LNode root) { 
         String toPrint = "";
-        if (leaf != null) { 
-            toPrint += (leaf.getKey()) + " "; 
-            toPrint += preOrder(leaf.getLeft()); 
-            toPrint += preOrder(leaf.getRight()); 
+        if (root != null) { 
+            toPrint += (root.getKey()) + " "; 
+            toPrint += preOrder(root.getLeft()); 
+            toPrint += preOrder(root.getRight()); 
         }
         return toPrint;
     }
     
-    public String inOrder(LNode leaf) { 
+    public String inOrder(LNode root) { 
         String toPrint = "";
-        if (leaf != null) { 
-            toPrint += inOrder(leaf.getLeft()); 
-            toPrint += (leaf.getKey()) + " "; 
-            toPrint += inOrder(leaf.getRight()); 
+        if (root != null) { 
+            toPrint += inOrder(root.getLeft()); 
+            toPrint += (root.getKey()) + " "; 
+            toPrint += inOrder(root.getRight()); 
         }
         return toPrint;
     }
     
-    public String postOrder(LNode leaf) { 
+    public String postOrder(LNode root) { 
         String toPrint = "";
-        if (leaf != null) { 
-            toPrint += postOrder(leaf.getLeft()); 
-            toPrint += postOrder(leaf.getRight()); 
-            toPrint += (leaf.getKey()) + " "; 
+        if (root != null) { 
+            toPrint += postOrder(root.getLeft()); 
+            toPrint += postOrder(root.getRight()); 
+            toPrint += (root.getKey()) + " "; 
         }
         return toPrint;
     }
