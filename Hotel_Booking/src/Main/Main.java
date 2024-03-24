@@ -6,7 +6,6 @@ package Main;
 
 import EDD.*;
 import GUI.*;
-import HotelBooking.*;
 
 
 /**
