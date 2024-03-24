@@ -7,6 +7,7 @@ package Main;
 import EDD.Hotel.Reserva;
 import EDD.*;
 import GUI.*;
+import HotelBooking.Manager;
 
 
 /**
@@ -20,7 +21,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Manager manager = new Manager();
+        //Manager manager = new Manager();
+        TEST home = new TEST();
+        home.setVisible(true);
  
         
         
