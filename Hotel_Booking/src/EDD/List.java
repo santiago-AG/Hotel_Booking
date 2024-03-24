@@ -76,8 +76,20 @@ public class List {
     /**
      * Creates a node and adds it to the end of List
      */
-    public void insertLast(Node pNew){
+    public void insertLastN(Node pNew){
         //Node pNew= new Node(x);
+        if (isEmpty()){
+            setpFirst(pNew);
+            setpLast(pNew);
+        }else{
+            getpLast().setpNext(pNew);
+            setpLast(pNew);    
+        }
+        setiN(getiN() + 1);
+    }
+    
+    public void insertLast(int x){
+        Node pNew= new Node(x);
         if (isEmpty()){
             setpFirst(pNew);
             setpLast(pNew);

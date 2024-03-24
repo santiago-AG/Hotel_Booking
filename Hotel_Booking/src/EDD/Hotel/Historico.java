@@ -4,6 +4,7 @@
  */
 package EDD.Hotel;
 import EDD.Node;
+import EDD.Node;
 
 /**
  *

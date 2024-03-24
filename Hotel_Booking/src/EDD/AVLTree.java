@@ -4,8 +4,6 @@
  */
 package EDD;
 
-import EDD.Hotel.Reserva;
-
 /**
  *
  * @author santi
@@ -142,15 +140,17 @@ public class AVLTree{
         }
   
         if (key.getKey() < root.getKey()){ 
-            root.setLeft(insert(root.getLeft(), key.getKey()));  
+            root.setLeft(insertNode(root.getLeft(), key));  
         }else if (key.getKey() > root.getKey()){ 
-            root.setRight(insert(root.getRight(), key.getKey())); 
+            root.setRight(insertNode(root.getRight(), key)); 
         }else{ // Duplicate keys not allowed 
             return root;
         }    
   
         //Update height ancestor root
-        root.setHeight(1 + max(height(root.getLeft()), height(root.getRight()))); 
+        int num1 = height(root.getLeft());
+        int num2 = height(root.getRight());
+        root.setHeight(1 + max(num1,num2)); 
         
         return rebalanceNode(root,key);    
     } 
@@ -226,7 +226,7 @@ public class AVLTree{
         String toPrint = "";
         if (root != null) { 
             toPrint += inOrder(root.getLeft()); 
-            toPrint += (root.getKey()) + " "; 
+            toPrint += (root.getKey()) + "\n"; 
             toPrint += inOrder(root.getRight()); 
         }
         return toPrint;

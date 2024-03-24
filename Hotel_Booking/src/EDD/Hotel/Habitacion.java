@@ -5,6 +5,8 @@
 package EDD.Hotel;
 
 import EDD.*;
+import EDD.LNode;
+import EDD.List;
 
 /**
  *

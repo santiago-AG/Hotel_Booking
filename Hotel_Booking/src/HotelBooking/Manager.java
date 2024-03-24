@@ -5,7 +5,10 @@
 package HotelBooking;
 
 
-import EDD.Hotel.*;
+import EDD.Hotel.Historico;
+import EDD.Hotel.Reserva;
+import EDD.Hotel.Estado;
+import EDD.Hotel.Habitacion;
 import EDD.*;
 import java.io.File;
 import java.util.Scanner;
@@ -14,15 +17,19 @@ import java.util.Scanner;
  *
  * @author santi
  */
-public class ExcelManager {
+public class Manager {
     protected AVLTree reservas;
     protected AVLTree hab_historico;
+    protected HashTable estados;
 
-    public ExcelManager() {
+    public Manager() {
         this.reservas = this.readReservas();
         this.hab_historico = this.readHabitaciones();
+        this.estados = this.readEstado();
     }
  
+    
+    //Lee el CSV de las reservas y crea un arbol AVL utilizando esos datos.
     public AVLTree readReservas(){
         try {
             File csv = new File("DataFiles/Reservas.csv");
@@ -35,7 +42,7 @@ public class ExcelManager {
                 String[] cliente = data.split(",");
                 if (!cliente[0].contains("ci")) {
                     int ci = Integer.parseInt(cliente[0].replace(".",""));
-                    Reserva reserva = new Reserva(ci,cliente[1],cliente[2],cliente[3],cliente[4],cliente[5],cliente[6],cliente[7],cliente[8]);
+                    LNode reserva = new Reserva(ci,cliente[1],cliente[2],cliente[3],cliente[4],cliente[5],cliente[6],cliente[7],cliente[8]);
                     tree.setRoot(tree.insertNode(tree.getRoot(), reserva));
                 }
             }
@@ -48,6 +55,8 @@ public class ExcelManager {
         }  
     }
     
+    
+    //Lee el CSV de las habitaciones y cea un AVLTree utilizando esos datos.
     public AVLTree readHabitaciones(){
         try {
             File csv = new File("DataFiles/Habitaciones.csv");
@@ -59,13 +68,13 @@ public class ExcelManager {
                 String data = myReader.nextLine();
                 String[] cliente = data.split(",");
                 if (!cliente[0].contains("num")) {
-                    Habitacion habitacion = new Habitacion(Integer.parseInt(cliente[0]),cliente[1],Integer.parseInt(cliente[2]));
+                    LNode habitacion = new Habitacion(Integer.parseInt(cliente[0]),cliente[1],Integer.parseInt(cliente[2]));
 //                    System.out.println(habitacion);
                     tree.setRoot(tree.insertNode(tree.getRoot(), habitacion));
                 }
             }
             myReader.close();
-            return tree;
+            return readHistorico(tree);
         }catch (Exception e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
@@ -86,7 +95,8 @@ public class ExcelManager {
                     Historico historico = new Historico(ci,cliente[1],cliente[2],cliente[3],cliente[4],cliente[5],Integer.parseInt(cliente[6]));
                     
                     //casteo de LNode a Habitacion via 
-                    LNode room = tree.search(historico.getNum_hab(), tree.getRoot());
+                    Habitacion room = (Habitacion) tree.search(historico.getNum_hab(), tree.getRoot());
+                    room.getHuespedes().insertLastN(historico);
                     //System.out.println(room.getKey());
                     
                 }
@@ -100,7 +110,8 @@ public class ExcelManager {
         }
     }
     
-    public void readEstado(){
+    //Lee el CSV de el estado y crea un HashTable de los huespedes actualmente en el hotel.
+    public HashTable readEstado(){
         try {
             File csv = new File("DataFiles/Estado.csv");
             Scanner myReader = new Scanner(csv);
@@ -111,19 +122,20 @@ public class ExcelManager {
                 String data = myReader.nextLine();
                 String[] cliente = data.split(",");
                 if (!cliente[0].contains("num")&&(cliente[0]!="")) {
-                    System.out.println(cliente[0]);
+                    //System.out.println(cliente[0]);
                     Estado estado = new Estado(Integer.parseInt(cliente[0]),cliente[1],cliente[2],cliente[3],cliente[4],cliente[5],cliente[6]);
                     table.insertarEstado(estado);
                 }
             }
             myReader.close();
+            return table;
         }catch (Exception e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
+            return null;
         }
     }
-    
-    
+
     /**
      * @return the reservas
      */
@@ -150,6 +162,28 @@ public class ExcelManager {
      */
     public void setHab_historico(AVLTree hab_historico) {
         this.hab_historico = hab_historico;
+    }
+    
+    /**
+     * @return the estados
+     */
+    public HashTable getEstados() {
+        return estados;
+    }
+
+    /**
+     * @param estados the estados to set
+     */
+    public void setEstados(HashTable estados) {
+        this.estados = estados;
+    }
+    
+    public void checkOut(){
+        //funcion checkout del hash
+        Estado checkout;
+        Node pNew = new Historico(0,"a","a","a","a","a",0);
+        Habitacion hab = (Habitacion) hab_historico.search(0, hab_historico.getRoot());
+        hab.getHuespedes().insertLastN(pNew);
     }
     
     
