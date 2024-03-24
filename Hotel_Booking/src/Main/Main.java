@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package HotelBooking;
+package Main;
 
 import EDD.*;
 import GUI.*;
@@ -12,7 +12,7 @@ import GUI.*;
  *
  * @author santi
  */
-public class Hotel_Booking {
+public class Main {
 
     /**
      * @param args the command line arguments
