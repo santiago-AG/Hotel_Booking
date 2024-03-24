@@ -28,106 +28,228 @@ public class Menu extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Registro = new javax.swing.JButton();
-        Reservas = new javax.swing.JButton();
-        Historial = new javax.swing.JButton();
-        CheckIn = new javax.swing.JButton();
-        CheckOut = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        registro = new javax.swing.JTabbedPane();
+        jPanel3 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextPane2 = new javax.swing.JTextPane();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        Input_numHabitacion = new javax.swing.JTextPane();
+        jButton5 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jTabbedPane4 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextPane1 = new javax.swing.JTextPane();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        reservacion = new javax.swing.JTabbedPane();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextPane4 = new javax.swing.JTextPane();
+        jButton6 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanel6 = new javax.swing.JPanel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTextPane5 = new javax.swing.JTextPane();
+        jButton7 = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Registro.setText("Registro");
-        Registro.addActionListener(new java.awt.event.ActionListener() {
+        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton2.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
+        jButton2.setText("Menu");
+        jPanel3.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 240, -1, -1));
+
+        jButton3.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
+        jButton3.setText("Check Out");
+        jPanel3.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, -1, -1));
+
+        jButton4.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
+        jButton4.setText("Buscar Cliente");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RegistroActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(Registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 110, -1));
+        jPanel3.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 180, 130, -1));
 
-        Reservas.setText("Reservas");
-        Reservas.addActionListener(new java.awt.event.ActionListener() {
+        jScrollPane2.setViewportView(jTextPane2);
+
+        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 220, 40));
+
+        jLabel6.setFont(new java.awt.Font("Sitka Heading", 1, 18)); // NOI18N
+        jLabel6.setText("Clientes actualmente hospedados");
+        jPanel3.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+
+        jLabel7.setFont(new java.awt.Font("Sitka Heading", 1, 14)); // NOI18N
+        jLabel7.setText("Ingrese el Nombre y Apellido del cliente");
+        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Cuaderno.jpg"))); // NOI18N
+        jPanel3.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 300));
+
+        registro.addTab("", jPanel3);
+
+        jTabbedPane1.addTab("Registro", new javax.swing.ImageIcon(getClass().getResource("/GUI/registro icono (1).png")), registro); // NOI18N
+
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane3.setViewportView(Input_numHabitacion);
+
+        jPanel4.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 240, 40));
+
+        jButton5.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
+        jButton5.setText("Buscar Cliente");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReservasActionPerformed(evt);
+                jButton5ActionPerformed(evt);
             }
         });
-        jPanel1.add(Reservas, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 110, -1));
+        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, -1));
 
-        Historial.setText("Historial");
-        Historial.addActionListener(new java.awt.event.ActionListener() {
+        jLabel3.setFont(new java.awt.Font("Sitka Heading", 1, 24)); // NOI18N
+        jLabel3.setText("Histórico de Clientes");
+        jPanel4.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 40, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Sitka Heading", 1, 14)); // NOI18N
+        jLabel9.setText("Ingrese el número de habitación que desee ver");
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Cuaderno.jpg"))); // NOI18N
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 300));
+
+        jTabbedPane3.addTab("", jPanel4);
+
+        jTabbedPane1.addTab("Histórico", new javax.swing.ImageIcon(getClass().getResource("/GUI/historial icono (1).png")), jTabbedPane3); // NOI18N
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
+        jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HistorialActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(Historial, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 110, -1));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, -1));
 
-        CheckIn.setText("Check In");
-        CheckIn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CheckInActionPerformed(evt);
-            }
-        });
-        jPanel1.add(CheckIn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, 110, -1));
+        jScrollPane1.setViewportView(jTextPane1);
 
-        CheckOut.setText("Check Out");
-        CheckOut.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CheckOutActionPerformed(evt);
-            }
-        });
-        jPanel1.add(CheckOut, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 110, -1));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 270, 30));
 
-        jLabel1.setText("Hotel California");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, -1, -1));
+        jLabel2.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Ingrese el Nombre y Apellido del huesped");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 270, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jLabel5.setFont(new java.awt.Font("Sitka Heading", 1, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Check In");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/lobby.jpg"))); // NOI18N
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 360, 310));
+
+        jTabbedPane4.addTab("", jPanel2);
+
+        jTabbedPane1.addTab("Check-In", new javax.swing.ImageIcon(getClass().getResource("/GUI/checkin icon.png")), jTabbedPane4); // NOI18N
+
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane4.setViewportView(jTextPane4);
+
+        jPanel5.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 240, 40));
+
+        jButton6.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
+        jButton6.setText("Buscar Cliente");
+        jPanel5.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 210, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
+        jLabel11.setText("Ingrese la cédula del cliente");
+        jPanel5.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 80, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Sitka Heading", 1, 24)); // NOI18N
+        jLabel12.setText("Reservaciones");
+        jPanel5.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Cuaderno.jpg"))); // NOI18N
+        jPanel5.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 300));
+
+        reservacion.addTab("", jPanel5);
+
+        jTabbedPane1.addTab("Reservación", new javax.swing.ImageIcon(getClass().getResource("/GUI/reservation icon.png")), reservacion); // NOI18N
+
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane5.setViewportView(jTextPane5);
+
+        jPanel6.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 220, 60));
+
+        jButton7.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
+        jButton7.setText("Buscar Cliente");
+        jPanel6.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Sitka Heading", 1, 36)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Check Out");
+        jPanel6.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, -1, -1));
+
+        jLabel14.setFont(new java.awt.Font("Sitka Subheading", 1, 14)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setText("Ingrese el Nombre y Apellido del huesped");
+        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/lobby.jpg"))); // NOI18N
+        jPanel6.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 300));
+
+        jTabbedPane2.addTab("", jPanel6);
+
+        jTabbedPane1.addTab("Check-Out", new javax.swing.ImageIcon(getClass().getResource("/GUI/checkout icon.png")), jTabbedPane2); // NOI18N
+        jTabbedPane2.getAccessibleContext().setAccessibleName("");
+
+        jPanel1.add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 340));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 490, 350));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void RegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegistroActionPerformed
-        Registro registro = new Registro();
-        registro.setVisible(true);
-        
-    }//GEN-LAST:event_RegistroActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void ReservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservasActionPerformed
-        Reservaciones reservas = new Reservaciones();
-        reservas.setVisible(true);
-        
-    }//GEN-LAST:event_ReservasActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void HistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HistorialActionPerformed
-        Historico historico = new Historico();
-        historico.setVisible(true);
-    }//GEN-LAST:event_HistorialActionPerformed
-
-    private void CheckInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckInActionPerformed
-        Check_In checkin = new Check_In();
-        checkin.setVisible(true);
-    }//GEN-LAST:event_CheckInActionPerformed
-
-    private void CheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckOutActionPerformed
-        Check_Out checkout = new Check_Out();
-        checkout.setVisible(true);
-    }//GEN-LAST:event_CheckOutActionPerformed
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,12 +287,49 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CheckIn;
-    private javax.swing.JButton CheckOut;
-    private javax.swing.JButton Historial;
-    private javax.swing.JButton Registro;
-    private javax.swing.JButton Reservas;
+    private javax.swing.JTextPane Input_numHabitacion;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JTabbedPane jTabbedPane4;
+    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JTextPane jTextPane2;
+    private javax.swing.JTextPane jTextPane4;
+    private javax.swing.JTextPane jTextPane5;
+    private javax.swing.JTabbedPane registro;
+    private javax.swing.JTabbedPane reservacion;
     // End of variables declaration//GEN-END:variables
 }

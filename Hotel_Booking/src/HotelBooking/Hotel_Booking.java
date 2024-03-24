@@ -21,8 +21,8 @@ public class Hotel_Booking {
         
         
         
-//        Home home = new Home();
-//        home.setVisible(true);
+        Home home = new Home();
+        home.setVisible(true);
 
 
         AVLTree tree = new AVLTree();
