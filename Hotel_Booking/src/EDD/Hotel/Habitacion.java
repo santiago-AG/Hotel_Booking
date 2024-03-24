@@ -69,5 +69,20 @@ public class Habitacion extends LNode {
         }
         return toPrint;
     }
+    
+    public String printHistory(){
+        String toPrint="";
+        Node aux = getHuespedes().getpFirst();
+        
+        while(aux!= null){
+            if (aux.getpNext()!=null) {    
+            toPrint+=aux.toPrint()+"\n";    
+            }else{
+            toPrint+=aux.toPrint();  
+            }
+            aux=aux.getpNext();
+        } 
+        return toPrint;
+    }
 
 }

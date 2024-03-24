@@ -50,4 +50,8 @@ public class Node <T>{
         return (String) getData();
     }
     
+    public String toPrint(){
+        return (String) getData();
+    }
+    
 }

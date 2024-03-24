@@ -21,10 +21,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Manager manager = new Manager();
-        manager.write_Reserva();
-//        TEST home = new TEST();
-//        home.setVisible(true);
+        TEST home = new TEST();
+        home.setVisible(true);
  
         
         

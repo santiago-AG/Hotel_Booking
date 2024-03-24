@@ -82,4 +82,12 @@ public class Historico<T> extends Node<T>{
         return toPrint;
     }
     
+    @Override
+    public String toPrint(){
+        String toPrint = "Cedula: "+String.valueOf(getData()) + "\nNombre: " + getNombre() + "\nApellido: " + getApellido() + "\nEmail: " + getEmail()+ "\nGenero: " + getGenero()
+                + "\nLlegada: " +getLlegada()+"\n";
+        
+        return toPrint;
+    }
+    
 }

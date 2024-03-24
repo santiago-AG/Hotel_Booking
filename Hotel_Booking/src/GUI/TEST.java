@@ -5,6 +5,7 @@
 package GUI;
 
 import EDD.*;
+import EDD.Hotel.*;
 import HotelBooking.Manager;
 import java.awt.Color;
 
@@ -60,6 +61,8 @@ public class TEST extends javax.swing.JFrame {
         ReservaText = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         BuscarReserva = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        MostrarReseva = new javax.swing.JTextArea();
         CheckIn = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         BuscarCheckIn = new javax.swing.JButton();
@@ -75,6 +78,8 @@ public class TEST extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         HistorialText = new javax.swing.JTextField();
         BuscarCheckOut1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        MostrarHistorial = new javax.swing.JTextArea();
         Huesped = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -260,7 +265,7 @@ public class TEST extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Reservaciones");
 
-        ReservaText.setForeground(new java.awt.Color(255, 255, 255));
+        ReservaText.setText("12345678");
         ReservaText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ReservaTextActionPerformed(evt);
@@ -268,7 +273,7 @@ public class TEST extends javax.swing.JFrame {
         });
 
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel12.setText("Ingrese el Nombre y Apellido del cliente");
+        jLabel12.setText("Ingrese el numero de cedula del cliente");
 
         BuscarReserva.setBackground(new java.awt.Color(51, 51, 51));
         BuscarReserva.setForeground(new java.awt.Color(255, 255, 255));
@@ -279,6 +284,10 @@ public class TEST extends javax.swing.JFrame {
             }
         });
 
+        MostrarReseva.setColumns(20);
+        MostrarReseva.setRows(5);
+        jScrollPane1.setViewportView(MostrarReseva);
+
         javax.swing.GroupLayout ReservasLayout = new javax.swing.GroupLayout(Reservas);
         Reservas.setLayout(ReservasLayout);
         ReservasLayout.setHorizontalGroup(
@@ -286,11 +295,14 @@ public class TEST extends javax.swing.JFrame {
             .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ReservasLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(ReservasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ReservaText))
-                .addGap(18, 18, 18)
-                .addComponent(BuscarReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(ReservasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane1)
+                    .addGroup(ReservasLayout.createSequentialGroup()
+                        .addGroup(ReservasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ReservaText))
+                        .addGap(18, 18, 18)
+                        .addComponent(BuscarReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(50, 50, 50))
         );
         ReservasLayout.setVerticalGroup(
@@ -304,7 +316,9 @@ public class TEST extends javax.swing.JFrame {
                 .addGroup(ReservasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ReservaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BuscarReserva))
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         CheckIn.setBackground(new java.awt.Color(100, 100, 100));
@@ -318,7 +332,6 @@ public class TEST extends javax.swing.JFrame {
         BuscarCheckIn.setForeground(new java.awt.Color(255, 255, 255));
         BuscarCheckIn.setText("Buscar Cliente");
 
-        CheckInText.setForeground(new java.awt.Color(255, 255, 255));
         CheckInText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CheckInTextActionPerformed(evt);
@@ -366,7 +379,6 @@ public class TEST extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Ingrese el Nombre y Apellido del cliente");
 
-        CheckOutText.setForeground(new java.awt.Color(255, 255, 255));
         CheckOutText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CheckOutTextActionPerformed(evt);
@@ -415,7 +427,6 @@ public class TEST extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Ingrese el numeo de habitacion");
 
-        HistorialText.setForeground(new java.awt.Color(255, 255, 255));
         HistorialText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 HistorialTextActionPerformed(evt);
@@ -425,6 +436,15 @@ public class TEST extends javax.swing.JFrame {
         BuscarCheckOut1.setBackground(new java.awt.Color(51, 51, 51));
         BuscarCheckOut1.setForeground(new java.awt.Color(255, 255, 255));
         BuscarCheckOut1.setText("Ver Historial");
+        BuscarCheckOut1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarCheckOut1ActionPerformed(evt);
+            }
+        });
+
+        MostrarHistorial.setColumns(20);
+        MostrarHistorial.setRows(5);
+        jScrollPane2.setViewportView(MostrarHistorial);
 
         javax.swing.GroupLayout HistoryLayout = new javax.swing.GroupLayout(History);
         History.setLayout(HistoryLayout);
@@ -434,10 +454,13 @@ public class TEST extends javax.swing.JFrame {
             .addGroup(HistoryLayout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(HistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(HistorialText, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(BuscarCheckOut1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2)
+                    .addGroup(HistoryLayout.createSequentialGroup()
+                        .addGroup(HistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(HistorialText, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(BuscarCheckOut1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         HistoryLayout.setVerticalGroup(
@@ -451,7 +474,9 @@ public class TEST extends javax.swing.JFrame {
                 .addGroup(HistoryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(HistorialText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BuscarCheckOut1))
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         Huesped.setBackground(new java.awt.Color(100, 100, 100));
@@ -464,7 +489,6 @@ public class TEST extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Ingrese el Nombre y Apellido del cliente");
 
-        ReservaText1.setForeground(new java.awt.Color(255, 255, 255));
         ReservaText1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ReservaText1ActionPerformed(evt);
@@ -481,9 +505,9 @@ public class TEST extends javax.swing.JFrame {
             HuespedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HuespedLayout.createSequentialGroup()
-                .addContainerGap(68, Short.MAX_VALUE)
-                .addGroup(HuespedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(44, Short.MAX_VALUE)
+                .addGroup(HuespedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ReservaText1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(BuscarReserva1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -679,10 +703,33 @@ public class TEST extends javax.swing.JFrame {
         // TODO add your handling code here:
         String inputCI = ReservaText.getText();
         int ci = Integer.parseInt(inputCI.replace(".",""));
-        LNode reserva = manager.getReservas().search(ci, manager.getReservas().getRoot());
-        System.out.println(reserva);
+        Reserva reserva = (Reserva) manager.getReservas().search(ci, manager.getReservas().getRoot());
+        if (reserva!=null) {
+            MostrarReseva.setText(reserva.toPrint());
+        }else{
+            MostrarReseva.setText("No se ha encontrado una reserva afiliada \ncon un cliente de cedula: "+ci);
+        }
+        
         
     }//GEN-LAST:event_BuscarReservaActionPerformed
+
+    private void BuscarCheckOut1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarCheckOut1ActionPerformed
+        // TODO add your handling code here:
+        String numHab = HistorialText.getText();
+        int num = Integer.parseInt(numHab);
+        Habitacion hab = (Habitacion) manager.getHab_historico().search(num, manager.getHab_historico().getRoot());
+        if (hab!=null) {
+            String texto = hab.printHistory();
+            if (texto.isBlank()) {   
+                MostrarHistorial.setText("La habitacion "+num+" nunca ha tenido huespedes!");
+            }else{
+                MostrarHistorial.setText("La lista de huespedes de la habitacion "+num+" es:\n"+texto);
+            }
+                    
+        }else{
+            MostrarHistorial.setText("Debe ingresar un numero de habitacion valido.\nEl hotel tiene habitaciones del 1 al 300");
+        }
+    }//GEN-LAST:event_BuscarCheckOut1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -738,6 +785,8 @@ public class TEST extends javax.swing.JFrame {
     private javax.swing.JPanel HistoryBut;
     private javax.swing.JPanel Huesped;
     private javax.swing.JPanel HuespedesBut;
+    private javax.swing.JTextArea MostrarHistorial;
+    private javax.swing.JTextArea MostrarReseva;
     private javax.swing.JLabel Nombres;
     private javax.swing.JPanel Paneles;
     private javax.swing.JTextField ReservaText;
@@ -760,5 +809,7 @@ public class TEST extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }

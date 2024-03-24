@@ -147,7 +147,20 @@ public class Reserva extends LNode{
 
     @Override
     public String toCSV(){
-        String toPrint =String.valueOf(getKey()) + "," + getNombre() + "," + getApellido() + "," + getEmail()+ "," + getTipo_hab()+ "," +getCelular()+ "," +getLlegada()+ "," +getSalida();
+        String toPrint =String.valueOf(getKey()) + "," + getNombre() + "," + getApellido() + "," + getEmail()+ "," + getGenero()+"," + getTipo_hab()+ "," +getCelular()+ "," +getLlegada()+ "," +getSalida();
+        return toPrint;
+    }
+    
+    public String toPrint(){
+        String toPrint = "Cedula: "+getKey()
+                    +"\nNombre: "+getNombre()
+                    +"\nApellido: "+getApellido()
+                    +"\nEmail: "+getEmail()
+                    +"\nGenero: "+getGenero()
+                    +"\nTipo de habitacion: "+ getTipo_hab()
+                    + "\nCelular: " +getCelular()
+                    + "\nLlegada: " +getLlegada()
+                    + "\nSaluda: " +getSalida();
         return toPrint;
     }
 }
