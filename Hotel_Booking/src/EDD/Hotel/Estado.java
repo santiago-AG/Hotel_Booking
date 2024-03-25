@@ -121,5 +121,10 @@ public class Estado <T> extends Node<T>{
         return toPrint;
     }
     
+    public String toCSV(){
+        String toPrint = String.valueOf(getData()) + "." + getName() + "," + getApellido() + "," + getEmail()+ "," + getGenero() +","+getCelular()+ "," +getLlegada();
+        return toPrint;
+    }
+    
     
 }

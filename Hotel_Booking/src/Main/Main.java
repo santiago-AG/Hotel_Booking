@@ -8,6 +8,8 @@ import EDD.Hotel.Reserva;
 import EDD.*;
 import GUI.*;
 import HotelBooking.Manager;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -20,7 +22,9 @@ public class Main {
      * 
      * @param args the command line arguments
      */
-    public static void main(String[] args) {       
+    public static void main(String[] args) {   
+//        Manager manager = new Manager();
+//        manager.write_Historico();
         TEST home = new TEST();
         home.setVisible(true);       
     }

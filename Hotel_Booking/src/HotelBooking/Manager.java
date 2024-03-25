@@ -182,14 +182,7 @@ public class Manager {
     public void setEstados(HashTable estados) {
         this.estados = estados;
     }
-    
-    public void checkOut(){
-        //funcion checkout del hash
-        Estado checkout;
-        Node pNew = new Historico(0,"a","a","a","a","a",0);
-        Habitacion hab = (Habitacion) hab_historico.search(0, hab_historico.getRoot());
-        hab.getHuespedes().insertLastN(pNew);
-    }
+
     
     public void write_Reserva(){
         String info = "ci,primer_nombre,segundo_nombre,email,genero,tipo_hab,celular,llegada,salida\n";
@@ -202,7 +195,6 @@ public class Manager {
             PrintWriter pw = new PrintWriter(file);
             pw.print(info);
             pw.close(); 
-            JOptionPane.showMessageDialog(null, "El archivo ha sido guardado de forma exitosa");
         }catch (Exception e){
             
         }
@@ -228,11 +220,32 @@ public class Manager {
             PrintWriter pw = new PrintWriter(file);
             pw.print(toPrint);
             pw.close(); 
-            JOptionPane.showMessageDialog(null, "El archivo ha sido guardado de forma exitosa");
         }catch (Exception e){
             
         }
                 
-    }    
+    }
+
+    public void write_Estados(){
+        String info="num_hab,primer_nombre,apellido,email,genero,celular,llegada\n";
+        String path="test/estados.csv";
+        info+=this.getEstados().toCSV();
+        
+        try{
+            File file = new File(path);
+            PrintWriter pw = new PrintWriter(file);
+            pw.print(info);
+            pw.close(); 
+        }catch (Exception e){
+            
+        }
+    }
+    
+    public void saveChanges(){
+        this.write_Estados();
+        this.write_Historico();
+        this.write_Reserva();
+        JOptionPane.showMessageDialog(null, "Ha guardado sus cambios!");
+    }
     
 }

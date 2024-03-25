@@ -140,7 +140,27 @@ public class HashTable {
         String habOcupado = "";
         for (int i = 0; i < getTablaEstados().length; i++) {
             if (getTablaEstados()[i]!=null) {
-                habOcupado+=","+getTablaEstados()[i].getData()+",";
+                Node aux = getTablaEstados()[i];
+                habOcupado+=","+aux.getData()+",";
+                while (aux.getpNext()!=null) {
+                    aux=aux.getpNext();
+                    habOcupado+=","+aux.getData()+",";
+                }
+            } 
+        }
+        return habOcupado;
+    }
+    
+    public String toCSV(){
+        String habOcupado = "";
+        for (int i = 0; i < getTablaEstados().length; i++) {
+            if (getTablaEstados()[i]!=null) {
+                Node aux = getTablaEstados()[i];
+                habOcupado+=aux.toCSV()+"\n";
+                while (aux.getpNext()!=null) {
+                    aux=aux.getpNext();
+                    habOcupado+=aux.toCSV()+"\n";
+                }
             } 
         }
         return habOcupado;

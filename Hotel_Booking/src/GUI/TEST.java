@@ -8,6 +8,10 @@ import EDD.*;
 import EDD.Hotel.*;
 import HotelBooking.Manager;
 import java.awt.Color;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -19,9 +23,10 @@ public class TEST extends javax.swing.JFrame {
      * Creates new form TEST
      */
     Manager manager = new Manager();
+    boolean editado =false;
+    int xMouse, yMouse;
     public TEST() {
         initComponents();
-        this.setLocationRelativeTo(null);
         Default.setVisible(true);
         
         Reservas.setVisible(false);
@@ -91,15 +96,22 @@ public class TEST extends javax.swing.JFrame {
         BuscarCliente = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         MostrarCliente = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
+        ExitBtn = new javax.swing.JPanel();
+        XExit = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
+        setLocationByPlatform(true);
+        setUndecorated(true);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Botones.setBackground(new java.awt.Color(204, 204, 204));
         Botones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ReservasBut.setBackground(new java.awt.Color(150, 150, 150));
+        ReservasBut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         ReservasBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ReservasButMouseClicked(evt);
@@ -129,6 +141,7 @@ public class TEST extends javax.swing.JFrame {
         Botones.add(ReservasBut, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 200, -1));
 
         CheckInBut.setBackground(new java.awt.Color(150, 150, 150));
+        CheckInBut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CheckInBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CheckInButMouseClicked(evt);
@@ -158,6 +171,7 @@ public class TEST extends javax.swing.JFrame {
         Botones.add(CheckInBut, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 200, -1));
 
         CheckOutBut.setBackground(new java.awt.Color(150, 150, 150));
+        CheckOutBut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         CheckOutBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CheckOutButMouseClicked(evt);
@@ -187,6 +201,7 @@ public class TEST extends javax.swing.JFrame {
         Botones.add(CheckOutBut, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 200, -1));
 
         HistoryBut.setBackground(new java.awt.Color(150, 150, 150));
+        HistoryBut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         HistoryBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 HistoryButMouseClicked(evt);
@@ -217,6 +232,7 @@ public class TEST extends javax.swing.JFrame {
 
         HuespedesBut.setBackground(new java.awt.Color(153, 153, 153));
         HuespedesBut.setForeground(new java.awt.Color(153, 153, 153));
+        HuespedesBut.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         HuespedesBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 HuespedesButMouseClicked(evt);
@@ -252,7 +268,7 @@ public class TEST extends javax.swing.JFrame {
         jLabel6.setText("HOTEL");
         Botones.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 200, 70));
 
-        getContentPane().add(Botones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 199, 390));
+        getContentPane().add(Botones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 200, 390));
 
         Paneles.setBackground(new java.awt.Color(100, 100, 100));
 
@@ -271,7 +287,12 @@ public class TEST extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Reservaciones");
 
-        ReservaText.setText("12345678");
+        ReservaText.setText("12.345.678");
+        ReservaText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ReservaTextMousePressed(evt);
+            }
+        });
         ReservaText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ReservaTextActionPerformed(evt);
@@ -336,13 +357,19 @@ public class TEST extends javax.swing.JFrame {
 
         BuscarCheckIn.setBackground(new java.awt.Color(51, 51, 51));
         BuscarCheckIn.setForeground(new java.awt.Color(255, 255, 255));
-        BuscarCheckIn.setText("Buscar Cliente");
+        BuscarCheckIn.setText("Check In");
         BuscarCheckIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscarCheckInActionPerformed(evt);
             }
         });
 
+        CheckInText.setText("12.345.678");
+        CheckInText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                CheckInTextMousePressed(evt);
+            }
+        });
         CheckInText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CheckInTextActionPerformed(evt);
@@ -350,7 +377,7 @@ public class TEST extends javax.swing.JFrame {
         });
 
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Ingrese el Nombre y Apellido del cliente");
+        jLabel13.setText("Ingrese el Numero de Cedula");
 
         CheckInMostrar.setColumns(20);
         CheckInMostrar.setRows(5);
@@ -399,6 +426,12 @@ public class TEST extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Ingrese el Nombre y Apellido del cliente");
 
+        CheckOutText.setText("Nombre Apellido");
+        CheckOutText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                CheckOutTextMousePressed(evt);
+            }
+        });
         CheckOutText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CheckOutTextActionPerformed(evt);
@@ -523,6 +556,12 @@ public class TEST extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Ingrese el Nombre y Apellido del cliente");
 
+        ClienteText.setText("Nombre Apellido");
+        ClienteText.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                ClienteTextMousePressed(evt);
+            }
+        });
         ClienteText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ClienteTextActionPerformed(evt);
@@ -548,15 +587,15 @@ public class TEST extends javax.swing.JFrame {
             HuespedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HuespedLayout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
-                .addGroup(HuespedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane3)
-                    .addGroup(HuespedLayout.createSequentialGroup()
-                        .addGroup(HuespedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ClienteText, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(BuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(50, Short.MAX_VALUE)
+                .addGroup(HuespedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HuespedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(HuespedLayout.createSequentialGroup()
+                            .addComponent(ClienteText, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(42, 42, 42)
+                            .addComponent(BuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(57, 57, 57))
         );
         HuespedLayout.setVerticalGroup(
@@ -624,12 +663,12 @@ public class TEST extends javax.swing.JFrame {
                 .addGroup(PanelesLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(CheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap(390, Short.MAX_VALUE)))
             .addGroup(PanelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PanelesLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(Huesped, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addContainerGap(390, Short.MAX_VALUE)))
             .addGroup(PanelesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(PanelesLayout.createSequentialGroup()
                     .addContainerGap()
@@ -637,7 +676,57 @@ public class TEST extends javax.swing.JFrame {
                     .addContainerGap(391, Short.MAX_VALUE)))
         );
 
-        getContentPane().add(Paneles, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 0, 490, 390));
+        getContentPane().add(Paneles, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, 490, 390));
+
+        jPanel1.setBackground(new java.awt.Color(241, 243, 249));
+        jPanel1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jPanel1MouseDragged(evt);
+            }
+        });
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPanel1MousePressed(evt);
+            }
+        });
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        ExitBtn.setBackground(new java.awt.Color(241, 243, 249));
+        ExitBtn.setPreferredSize(new java.awt.Dimension(40, 40));
+        ExitBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ExitBtnMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                ExitBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                ExitBtnMouseExited(evt);
+            }
+        });
+
+        XExit.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 20)); // NOI18N
+        XExit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        XExit.setText("X");
+
+        javax.swing.GroupLayout ExitBtnLayout = new javax.swing.GroupLayout(ExitBtn);
+        ExitBtn.setLayout(ExitBtnLayout);
+        ExitBtnLayout.setHorizontalGroup(
+            ExitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ExitBtnLayout.createSequentialGroup()
+                .addComponent(XExit, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 14, Short.MAX_VALUE))
+        );
+        ExitBtnLayout.setVerticalGroup(
+            ExitBtnLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ExitBtnLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(XExit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel1.add(ExitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, 60, 40));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -813,6 +902,7 @@ public class TEST extends javax.swing.JFrame {
                 Historico persona = new Historico(0,cliente.getName(),cliente.getApellido(),cliente.getEmail(),cliente.getGenero(),cliente.getLlegada(), (int) cliente.getData());
                 Habitacion hab = (Habitacion) manager.getHab_historico().search(persona.getNum_hab(), manager.getHab_historico().getRoot());
                 hab.getHuespedes().insertLastN(persona);
+                editado=true;
             }
         }catch(Exception e){
             MostrarCheckOut.setText("El cliente "+clientenombre+" no ha sido encontrado.\n"
@@ -829,16 +919,15 @@ public class TEST extends javax.swing.JFrame {
             if (test!=null) {
                 CheckInMostrar.setText("El cliente "+test.getNombre()+" "+test.getApellido()+" hizo check in!\n\n"+test.toPrint());
                 manager.getHab_historico().search(ci, manager.getHab_historico().getRoot());
-                
-                
+
                 int numHab = 1;
                 boolean found = false;
                 String hab1 = test.getTipo_hab();
                 while (!found){
-                    System.out.println(numHab);
                     Habitacion hab = (Habitacion) manager.getHab_historico().search(numHab, manager.getHab_historico().getRoot());
                     String seq = ","+numHab+",";
-                    if (manager.getEstados().ocupados().contains(seq)) {
+                    //System.out.println(manager.getEstados().ocupados());
+                    if (!manager.getEstados().ocupados().contains(seq)) {
                         String hab2 = hab.getTipo_hab();
                         
                         if (hab1.equals(hab2)) {
@@ -849,6 +938,7 @@ public class TEST extends javax.swing.JFrame {
                         String name = nombre+apellido;
                         manager.getEstados().insert(name, cliente);
                         found = true;
+                        editado=true;
                         }
                     }
                     numHab+=1;
@@ -866,6 +956,71 @@ public class TEST extends javax.swing.JFrame {
             CheckInMostrar.setText("No se ha encontrado una reserva afiliada \ncon un cliente de cedula: "+inputCI);
         }
     }//GEN-LAST:event_BuscarCheckInActionPerformed
+
+    private void ExitBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitBtnMouseEntered
+        // TODO add your handling code here:
+        ExitBtn.setBackground(Color.red);
+        XExit.setForeground(Color.white);
+    }//GEN-LAST:event_ExitBtnMouseEntered
+
+    private void ExitBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitBtnMouseExited
+        // TODO add your handling code here:
+        ExitBtn.setBackground(new Color(241,243,249));
+        XExit.setForeground(new Color(60,63,65));
+    }//GEN-LAST:event_ExitBtnMouseExited
+
+    private void ExitBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitBtnMouseClicked
+        // TODO add your handling code here:
+        if (!editado) {
+            System.exit(0);
+        }else{
+            String[] options = { "Si", "No"};
+            ImageIcon icon = new ImageIcon("/GUI/Icon/save.png");
+            var selection = JOptionPane.showOptionDialog(null, "Desea guardar sus cambios?", "Guardar", 0, 3, icon, options, options[0]);
+            if (selection == 0) {
+                manager.saveChanges();
+                System.exit(0);
+            }
+            if (selection == 1) { 
+                System.exit(0);
+            }
+        }
+        
+    }//GEN-LAST:event_ExitBtnMouseClicked
+
+    private void ReservaTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReservaTextMousePressed
+        // TODO add your handling code here:
+        ReservaText.setText("");
+    }//GEN-LAST:event_ReservaTextMousePressed
+
+    private void CheckInTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckInTextMousePressed
+        // TODO add your handling code here:
+        CheckInText.setText("");
+    }//GEN-LAST:event_CheckInTextMousePressed
+
+    private void CheckOutTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckOutTextMousePressed
+        // TODO add your handling code here:
+        CheckOutText.setText("");
+    }//GEN-LAST:event_CheckOutTextMousePressed
+
+    private void ClienteTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClienteTextMousePressed
+        // TODO add your handling code here:
+        ClienteText.setText("");
+    }//GEN-LAST:event_ClienteTextMousePressed
+
+    private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
+        // TODO add your handling code here:
+        xMouse = evt.getX();
+        yMouse = evt.getY();
+    }//GEN-LAST:event_jPanel1MousePressed
+
+    private void jPanel1MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x-xMouse, y-yMouse);
+        
+    }//GEN-LAST:event_jPanel1MouseDragged
 
     /**
      * @param args the command line arguments
@@ -918,6 +1073,7 @@ public class TEST extends javax.swing.JFrame {
     private javax.swing.JTextField CheckOutText;
     private javax.swing.JTextField ClienteText;
     private javax.swing.JPanel Default;
+    private javax.swing.JPanel ExitBtn;
     private javax.swing.JTextField HistorialText;
     private javax.swing.JPanel History;
     private javax.swing.JPanel HistoryBut;
@@ -932,6 +1088,7 @@ public class TEST extends javax.swing.JFrame {
     private javax.swing.JTextField ReservaText;
     private javax.swing.JPanel Reservas;
     private javax.swing.JPanel ReservasBut;
+    private javax.swing.JLabel XExit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -948,6 +1105,7 @@ public class TEST extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
