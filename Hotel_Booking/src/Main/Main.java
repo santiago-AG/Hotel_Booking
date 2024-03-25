@@ -22,14 +22,7 @@ public class Main {
      */
     public static void main(String[] args) {       
         TEST home = new TEST();
-        home.setVisible(true);
-        Manager manager = new Manager();
-        System.out.println(manager.getReservas().getRoot().getKey());
- 
-        
-        
-        
-        
+        home.setVisible(true);       
     }
     
 }

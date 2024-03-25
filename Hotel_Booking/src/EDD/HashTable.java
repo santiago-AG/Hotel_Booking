@@ -136,4 +136,14 @@ public class HashTable {
         return null;
     }
     
+    public String ocupados(){
+        String habOcupado = "";
+        for (int i = 0; i < getTablaEstados().length; i++) {
+            if (getTablaEstados()[i]!=null) {
+                habOcupado+=","+getTablaEstados()[i].getData()+",";
+            } 
+        }
+        return habOcupado;
+    }
+    
 }

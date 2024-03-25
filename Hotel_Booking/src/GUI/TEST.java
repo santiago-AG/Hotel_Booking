@@ -751,7 +751,7 @@ public class TEST extends javax.swing.JFrame {
         // TODO add your handling code here:
         String inputCI = ReservaText.getText();
         try{
-            int ci = Integer.parseInt(inputCI.replace(".",""));
+            int ci = Integer.parseInt(inputCI.replace(".","").replace(" ",""));
             Reserva reserva = (Reserva) manager.getReservas().search(ci, manager.getReservas().getRoot());
             if (reserva!=null) {
                 MostrarReseva.setText(reserva.toPrint());
@@ -770,7 +770,7 @@ public class TEST extends javax.swing.JFrame {
         // TODO add your handling code here:
         String numHab = HistorialText.getText();
         try{
-            int num = Integer.parseInt(numHab);
+            int num = Integer.parseInt(numHab.replace(" ",""));
             Habitacion hab = (Habitacion) manager.getHab_historico().search(num, manager.getHab_historico().getRoot());
             if (hab!=null) {
                 String texto = hab.printHistory();
@@ -824,11 +824,38 @@ public class TEST extends javax.swing.JFrame {
         // TODO add your handling code here:
         String inputCI = CheckInText.getText();
         try{
-            int ci = Integer.parseInt(inputCI.replace(".",""));
+            int ci = Integer.parseInt(inputCI.replace(".","").replace(" ",""));
             Reserva test = (Reserva) manager.getReservas().search(ci,manager.getReservas().getRoot());
             if (test!=null) {
-                Reserva eliminado = (Reserva) manager.getReservas().Delete(ci,manager.getReservas().getRoot());
-                CheckInMostrar.setText(eliminado.toPrint());
+                CheckInMostrar.setText("El cliente "+test.getNombre()+" "+test.getApellido()+" hizo check in!\n\n"+test.toPrint());
+                manager.getHab_historico().search(ci, manager.getHab_historico().getRoot());
+                
+                
+                int numHab = 1;
+                boolean found = false;
+                String hab1 = test.getTipo_hab();
+                while (!found){
+                    System.out.println(numHab);
+                    Habitacion hab = (Habitacion) manager.getHab_historico().search(numHab, manager.getHab_historico().getRoot());
+                    String seq = ","+numHab+",";
+                    if (manager.getEstados().ocupados().contains(seq)) {
+                        String hab2 = hab.getTipo_hab();
+                        
+                        if (hab1.equals(hab2)) {
+                        Estado cliente = new Estado(numHab,test.getNombre(),test.getApellido(),test.getEmail(),test.getGenero(),test.getCelular(),test.getLlegada());
+                        manager.getReservas().DeleteReserva(ci, (Reserva) manager.getReservas().getRoot());
+                        String nombre = cliente.getName().toLowerCase().replace(" ", "");
+                        String apellido = cliente.getApellido().toLowerCase().replace(" ", "");
+                        String name = nombre+apellido;
+                        manager.getEstados().insert(name, cliente);
+                        found = true;
+                        }
+                    }
+                    numHab+=1;
+                }
+                
+                
+
 
             }else{
                     

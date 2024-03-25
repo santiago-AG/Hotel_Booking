@@ -185,26 +185,33 @@ public class AVLTree{
         return root;
     }
     
-    public LNode Delete(int Elem, LNode ABB){
-            LNode resp=ABB;
-            System.out.println(resp.getKey());
+    public LNode DeleteReserva(int Elem, Reserva ABB){
+            Reserva resp= ABB;
             if (Elem< ABB.getKey()) {
-                ABB.setLeft(Delete(Elem,ABB.getLeft()));
+                ABB.setLeft(DeleteReserva(Elem, (Reserva) ABB.getLeft()));
             }else{
                 if(Elem > ABB.getKey()){
-                    ABB.setRight(Delete(Elem,ABB.getRight()));
+                    ABB.setRight(DeleteReserva(Elem, (Reserva) ABB.getRight()));
                 }else{
                     if(ABB.getLeft()!= null && ABB.getRight()!= null){
                         LNode temp=ABB;
-                        LNode Max_Izq =Max(ABB.getLeft());
+                        Reserva Max_Izq =(Reserva) Max(ABB.getLeft());
                         ABB.setKey(Max_Izq.getKey());
-                        temp.setLeft(Delete(Max_Izq.getKey(),temp.getLeft()));
+                        ABB.setNombre(Max_Izq.getNombre());
+                        ABB.setApellido(Max_Izq.getApellido());
+                        ABB.setEmail(Max_Izq.getEmail());
+                        ABB.setGenero(Max_Izq.getGenero());
+                        ABB.setTipo_hab(Max_Izq.getTipo_hab());
+                        ABB.setCelular(Max_Izq.getCelular());
+                        ABB.setLlegada(Max_Izq.getLlegada());
+                        ABB.setSalida(Max_Izq.getSalida());
+                        temp.setLeft(DeleteReserva(Max_Izq.getKey(), (Reserva) temp.getLeft()));
                        }else{
                             if(ABB.getLeft()!=null){
-                                resp=ABB.getLeft();
+                                resp=(Reserva) ABB.getLeft();
                             }else{
                                 if(ABB.getRight()!=null){
-                                    resp=ABB.getRight();
+                                    resp=(Reserva)ABB.getRight();
                                 }else{
                                     resp=null;
                                 }
@@ -222,6 +229,30 @@ public class AVLTree{
             return Max(n.getRight());
         }
     }
+      
+//    public LNode searchDelete(LNode root,int data){
+//        LNode aux = root;
+//        System.out.println(root.getKey()+" + "+data);
+//        if (root.getKey()==data){
+//            System.out.println("llegue");
+//            System.out.println(root);
+//            root = root.getRight();
+//            System.out.println(root);
+//            LNode aux1 = root.getLeft();
+//            aux.setRight(null);
+//            root.setLeft(aux.getLeft());
+//            aux.setLeft(null);
+//            LNode MaximoLeft = Max(root);
+//            MaximoLeft.setRight(aux1);
+//        }
+//        if (aux.getKey()>data){
+//            aux=searchDelete(root.getLeft(),data);
+//        }
+//        if(aux.getKey()<data){
+//            aux=searchDelete(root.getRight(),data);
+//        } 
+//        return aux;  
+//    }
     
     public LNode search(int data, LNode root){
         if (root!=null) {
