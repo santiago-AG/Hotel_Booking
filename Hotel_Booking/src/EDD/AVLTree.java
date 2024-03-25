@@ -4,6 +4,8 @@
  */
 package EDD;
 
+import EDD.Hotel.Reserva;
+
 /**
  *
  * @author santi
@@ -183,6 +185,44 @@ public class AVLTree{
         return root;
     }
     
+    public LNode Delete(int Elem, LNode ABB){
+            LNode resp=ABB;
+            System.out.println(resp.getKey());
+            if (Elem< ABB.getKey()) {
+                ABB.setLeft(Delete(Elem,ABB.getLeft()));
+            }else{
+                if(Elem > ABB.getKey()){
+                    ABB.setRight(Delete(Elem,ABB.getRight()));
+                }else{
+                    if(ABB.getLeft()!= null && ABB.getRight()!= null){
+                        LNode temp=ABB;
+                        LNode Max_Izq =Max(ABB.getLeft());
+                        ABB.setKey(Max_Izq.getKey());
+                        temp.setLeft(Delete(Max_Izq.getKey(),temp.getLeft()));
+                       }else{
+                            if(ABB.getLeft()!=null){
+                                resp=ABB.getLeft();
+                            }else{
+                                if(ABB.getRight()!=null){
+                                    resp=ABB.getRight();
+                                }else{
+                                    resp=null;
+                                }
+                            }
+                    }
+                }
+            }
+            return resp;
+        }
+        
+    public LNode Max(LNode n) {
+        if (n.getRight() == null) {
+            return n;
+        } else {
+            return Max(n.getRight());
+        }
+    }
+    
     public LNode search(int data, LNode root){
         if (root!=null) {
             if (root.getKey()>data) {
@@ -196,7 +236,7 @@ public class AVLTree{
         return null;
         }
     }
-        
+            
     /**
      * @return the root of AVLTree
      */

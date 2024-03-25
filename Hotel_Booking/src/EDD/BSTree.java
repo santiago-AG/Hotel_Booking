@@ -82,6 +82,47 @@ public class BSTree <T> {
         }
     }
     
+    public LNode deleteNode(LNode root, int key) {
+        if (root == null){
+            return root;
+        }
+        
+        if (root.getKey() > key) {
+            root.setLeft(deleteNode(root.getLeft(), key));
+            return root;
+        } else if (root.getKey() < key) {
+            root.setRight(deleteNode(root.getRight(), key));
+            return root;
+        }
+
+        if (root.getLeft() == null) {
+            LNode temp = root.getRight();
+            return temp;
+        } else if (root.getRight() == null) {
+            LNode temp = root.getLeft();
+            return temp;
+        }
+
+        else {
+            LNode succParent = root;
+
+            LNode succ = root.getRight();
+            while (succ.getLeft() != null) {
+                succParent = succ;
+                succ = succ.getLeft();
+            }
+ 
+            if (succParent != root)
+                succParent.setLeft(succ.getRight());
+            else
+                succParent.setRight(succ.getRight());
+
+            root.setKey(succ.getKey());
+
+            return root;
+        }
+    }
+    
         
     /**
      * @return the root of AVLTree

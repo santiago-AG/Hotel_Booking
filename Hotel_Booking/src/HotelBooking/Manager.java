@@ -126,7 +126,10 @@ public class Manager {
                 if (!cliente[0].contains("num")&&(cliente[0]!="")) {
                     //System.out.println(cliente[0]);
                     Estado estado = new Estado(Integer.parseInt(cliente[0]),cliente[1],cliente[2],cliente[3],cliente[4],cliente[5],cliente[6]);
-                    table.insertarEstado(estado);
+                    String nombre = estado.getName().toLowerCase().replace(" ", "");
+                    String apellido = estado.getApellido().toLowerCase().replace(" ", "");
+                    String name = nombre+apellido;
+                    table.insert(name,estado);
                 }
             }
             myReader.close();
@@ -230,7 +233,6 @@ public class Manager {
             
         }
                 
-    }
-    
+    }    
     
 }

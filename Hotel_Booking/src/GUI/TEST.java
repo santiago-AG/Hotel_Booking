@@ -68,11 +68,15 @@ public class TEST extends javax.swing.JFrame {
         BuscarCheckIn = new javax.swing.JButton();
         CheckInText = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        CheckInMostrar = new javax.swing.JTextArea();
         CheckOut = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         CheckOutText = new javax.swing.JTextField();
         BuscarCheckOut = new javax.swing.JButton();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        MostrarCheckOut = new javax.swing.JTextArea();
         History = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -83,8 +87,10 @@ public class TEST extends javax.swing.JFrame {
         Huesped = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        ReservaText1 = new javax.swing.JTextField();
-        BuscarReserva1 = new javax.swing.JButton();
+        ClienteText = new javax.swing.JTextField();
+        BuscarCliente = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        MostrarCliente = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 51));
@@ -331,6 +337,11 @@ public class TEST extends javax.swing.JFrame {
         BuscarCheckIn.setBackground(new java.awt.Color(51, 51, 51));
         BuscarCheckIn.setForeground(new java.awt.Color(255, 255, 255));
         BuscarCheckIn.setText("Buscar Cliente");
+        BuscarCheckIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarCheckInActionPerformed(evt);
+            }
+        });
 
         CheckInText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -341,6 +352,10 @@ public class TEST extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Ingrese el Nombre y Apellido del cliente");
 
+        CheckInMostrar.setColumns(20);
+        CheckInMostrar.setRows(5);
+        jScrollPane5.setViewportView(CheckInMostrar);
+
         javax.swing.GroupLayout CheckInLayout = new javax.swing.GroupLayout(CheckIn);
         CheckIn.setLayout(CheckInLayout);
         CheckInLayout.setHorizontalGroup(
@@ -349,10 +364,13 @@ public class TEST extends javax.swing.JFrame {
             .addGroup(CheckInLayout.createSequentialGroup()
                 .addGap(54, 54, 54)
                 .addGroup(CheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CheckInText, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(BuscarCheckIn, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane5)
+                    .addGroup(CheckInLayout.createSequentialGroup()
+                        .addGroup(CheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(CheckInText, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(BuscarCheckIn, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         CheckInLayout.setVerticalGroup(
@@ -366,7 +384,9 @@ public class TEST extends javax.swing.JFrame {
                 .addGroup(CheckInLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CheckInText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BuscarCheckIn))
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         CheckOut.setBackground(new java.awt.Color(100, 100, 100));
@@ -387,7 +407,16 @@ public class TEST extends javax.swing.JFrame {
 
         BuscarCheckOut.setBackground(new java.awt.Color(51, 51, 51));
         BuscarCheckOut.setForeground(new java.awt.Color(255, 255, 255));
-        BuscarCheckOut.setText("Buscar Cliente");
+        BuscarCheckOut.setText("Check Out");
+        BuscarCheckOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarCheckOutActionPerformed(evt);
+            }
+        });
+
+        MostrarCheckOut.setColumns(20);
+        MostrarCheckOut.setRows(5);
+        jScrollPane4.setViewportView(MostrarCheckOut);
 
         javax.swing.GroupLayout CheckOutLayout = new javax.swing.GroupLayout(CheckOut);
         CheckOut.setLayout(CheckOutLayout);
@@ -397,10 +426,13 @@ public class TEST extends javax.swing.JFrame {
             .addGroup(CheckOutLayout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(CheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CheckOutText, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(BuscarCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane4)
+                    .addGroup(CheckOutLayout.createSequentialGroup()
+                        .addGroup(CheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(CheckOutText, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(BuscarCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         CheckOutLayout.setVerticalGroup(
@@ -414,7 +446,9 @@ public class TEST extends javax.swing.JFrame {
                 .addGroup(CheckOutLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CheckOutText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BuscarCheckOut))
-                .addContainerGap(267, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         History.setBackground(new java.awt.Color(100, 100, 100));
@@ -489,15 +523,24 @@ public class TEST extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Ingrese el Nombre y Apellido del cliente");
 
-        ReservaText1.addActionListener(new java.awt.event.ActionListener() {
+        ClienteText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ReservaText1ActionPerformed(evt);
+                ClienteTextActionPerformed(evt);
             }
         });
 
-        BuscarReserva1.setBackground(new java.awt.Color(51, 51, 51));
-        BuscarReserva1.setForeground(new java.awt.Color(255, 255, 255));
-        BuscarReserva1.setText("Buscar Cliente");
+        BuscarCliente.setBackground(new java.awt.Color(51, 51, 51));
+        BuscarCliente.setForeground(new java.awt.Color(255, 255, 255));
+        BuscarCliente.setText("Buscar Cliente");
+        BuscarCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarClienteActionPerformed(evt);
+            }
+        });
+
+        MostrarCliente.setColumns(20);
+        MostrarCliente.setRows(5);
+        jScrollPane3.setViewportView(MostrarCliente);
 
         javax.swing.GroupLayout HuespedLayout = new javax.swing.GroupLayout(Huesped);
         Huesped.setLayout(HuespedLayout);
@@ -506,11 +549,14 @@ public class TEST extends javax.swing.JFrame {
             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HuespedLayout.createSequentialGroup()
                 .addContainerGap(44, Short.MAX_VALUE)
-                .addGroup(HuespedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ReservaText1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(BuscarReserva1, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(HuespedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jScrollPane3)
+                    .addGroup(HuespedLayout.createSequentialGroup()
+                        .addGroup(HuespedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ClienteText, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(BuscarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(57, 57, 57))
         );
         HuespedLayout.setVerticalGroup(
@@ -522,9 +568,11 @@ public class TEST extends javax.swing.JFrame {
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(HuespedLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ReservaText1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BuscarReserva1))
-                .addContainerGap(261, Short.MAX_VALUE))
+                    .addComponent(ClienteText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BuscarCliente))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout PanelesLayout = new javax.swing.GroupLayout(Paneles);
@@ -695,19 +743,24 @@ public class TEST extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_HistorialTextActionPerformed
 
-    private void ReservaText1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservaText1ActionPerformed
+    private void ClienteTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteTextActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ReservaText1ActionPerformed
+    }//GEN-LAST:event_ClienteTextActionPerformed
 
     private void BuscarReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarReservaActionPerformed
         // TODO add your handling code here:
         String inputCI = ReservaText.getText();
-        int ci = Integer.parseInt(inputCI.replace(".",""));
-        Reserva reserva = (Reserva) manager.getReservas().search(ci, manager.getReservas().getRoot());
-        if (reserva!=null) {
-            MostrarReseva.setText(reserva.toPrint());
-        }else{
-            MostrarReseva.setText("No se ha encontrado una reserva afiliada \ncon un cliente de cedula: "+ci);
+        try{
+            int ci = Integer.parseInt(inputCI.replace(".",""));
+            Reserva reserva = (Reserva) manager.getReservas().search(ci, manager.getReservas().getRoot());
+            if (reserva!=null) {
+                MostrarReseva.setText(reserva.toPrint());
+            }else{
+                MostrarReseva.setText("No se ha encontrado una reserva afiliada \ncon un cliente de cedula: "+ci);
+            }
+            
+        }catch(Exception e){
+            MostrarReseva.setText("No se ha encontrado una reserva afiliada \ncon un cliente de cedula: "+inputCI);
         }
         
         
@@ -716,20 +769,76 @@ public class TEST extends javax.swing.JFrame {
     private void BuscarCheckOut1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarCheckOut1ActionPerformed
         // TODO add your handling code here:
         String numHab = HistorialText.getText();
-        int num = Integer.parseInt(numHab);
-        Habitacion hab = (Habitacion) manager.getHab_historico().search(num, manager.getHab_historico().getRoot());
-        if (hab!=null) {
-            String texto = hab.printHistory();
-            if (texto.isBlank()) {   
-                MostrarHistorial.setText("La habitacion "+num+" nunca ha tenido huespedes!");
+        try{
+            int num = Integer.parseInt(numHab);
+            Habitacion hab = (Habitacion) manager.getHab_historico().search(num, manager.getHab_historico().getRoot());
+            if (hab!=null) {
+                String texto = hab.printHistory();
+                if (texto.isBlank()) {   
+                    MostrarHistorial.setText("La habitacion "+num+" nunca ha tenido huespedes!");
+                }else{
+                    MostrarHistorial.setText("La lista de huespedes de la habitacion "+num+" es:\n"+texto);
+                }
+
             }else{
-                MostrarHistorial.setText("La lista de huespedes de la habitacion "+num+" es:\n"+texto);
-            }
-                    
-        }else{
+                MostrarHistorial.setText("Debe ingresar un numero de habitacion valido.\nEl hotel tiene habitaciones del 1 al 300");
+            } 
+        }catch(Exception e){
             MostrarHistorial.setText("Debe ingresar un numero de habitacion valido.\nEl hotel tiene habitaciones del 1 al 300");
         }
     }//GEN-LAST:event_BuscarCheckOut1ActionPerformed
+
+    private void BuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarClienteActionPerformed
+        // TODO add your handling code here:
+        String clientenombre = ClienteText.getText();
+        try{
+        Estado cliente = (Estado) manager.getEstados().search(clientenombre);
+        MostrarCliente.setText(cliente.toPrint());
+        }catch(Exception e){
+        MostrarCliente.setText("El cliente "+clientenombre+" no ha sido encontrado.\n"
+                + "Porfavor ingrese otro Nombre y Apellido. ");
+        }
+    }//GEN-LAST:event_BuscarClienteActionPerformed
+
+    private void BuscarCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarCheckOutActionPerformed
+        // TODO add your handling code here:
+        String clientenombre = CheckOutText.getText();
+        try{
+            Estado cliente = (Estado) manager.getEstados().delete(clientenombre);
+            if (cliente.equals(null)){
+                MostrarCheckOut.setText("El cliente '"+clientenombre+"' no ha sido encontrado.\n"
+                + "Porfavor ingrese otro Nombre y Apellido. ");
+            }else{
+                MostrarCheckOut.setText("Se le hizo check out al cliente "+cliente.getName()+" "+cliente.getApellido()+"\nde forma exitosa\n\n"+cliente.toPrint());
+                Historico persona = new Historico(0,cliente.getName(),cliente.getApellido(),cliente.getEmail(),cliente.getGenero(),cliente.getLlegada(), (int) cliente.getData());
+                Habitacion hab = (Habitacion) manager.getHab_historico().search(persona.getNum_hab(), manager.getHab_historico().getRoot());
+                hab.getHuespedes().insertLastN(persona);
+            }
+        }catch(Exception e){
+            MostrarCheckOut.setText("El cliente "+clientenombre+" no ha sido encontrado.\n"
+                + "Porfavor ingrese otro Nombre y Apellido. ");
+        }
+    }//GEN-LAST:event_BuscarCheckOutActionPerformed
+
+    private void BuscarCheckInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarCheckInActionPerformed
+        // TODO add your handling code here:
+        String inputCI = CheckInText.getText();
+        try{
+            int ci = Integer.parseInt(inputCI.replace(".",""));
+            Reserva test = (Reserva) manager.getReservas().search(ci,manager.getReservas().getRoot());
+            if (test!=null) {
+                Reserva eliminado = (Reserva) manager.getReservas().Delete(ci,manager.getReservas().getRoot());
+                CheckInMostrar.setText(eliminado.toPrint());
+
+            }else{
+                    
+                CheckInMostrar.setText("No se ha encontrado una reserva afiliada \ncon un cliente de cedula: "+ci);
+            }
+            
+        }catch(Exception e){
+            CheckInMostrar.setText("No se ha encontrado una reserva afiliada \ncon un cliente de cedula: "+inputCI);
+        }
+    }//GEN-LAST:event_BuscarCheckInActionPerformed
 
     /**
      * @param args the command line arguments
@@ -771,26 +880,29 @@ public class TEST extends javax.swing.JFrame {
     private javax.swing.JButton BuscarCheckIn;
     private javax.swing.JButton BuscarCheckOut;
     private javax.swing.JButton BuscarCheckOut1;
+    private javax.swing.JButton BuscarCliente;
     private javax.swing.JButton BuscarReserva;
-    private javax.swing.JButton BuscarReserva1;
     private javax.swing.JPanel CheckIn;
     private javax.swing.JPanel CheckInBut;
+    private javax.swing.JTextArea CheckInMostrar;
     private javax.swing.JTextField CheckInText;
     private javax.swing.JPanel CheckOut;
     private javax.swing.JPanel CheckOutBut;
     private javax.swing.JTextField CheckOutText;
+    private javax.swing.JTextField ClienteText;
     private javax.swing.JPanel Default;
     private javax.swing.JTextField HistorialText;
     private javax.swing.JPanel History;
     private javax.swing.JPanel HistoryBut;
     private javax.swing.JPanel Huesped;
     private javax.swing.JPanel HuespedesBut;
+    private javax.swing.JTextArea MostrarCheckOut;
+    private javax.swing.JTextArea MostrarCliente;
     private javax.swing.JTextArea MostrarHistorial;
     private javax.swing.JTextArea MostrarReseva;
     private javax.swing.JLabel Nombres;
     private javax.swing.JPanel Paneles;
     private javax.swing.JTextField ReservaText;
-    private javax.swing.JTextField ReservaText1;
     private javax.swing.JPanel Reservas;
     private javax.swing.JPanel ReservasBut;
     private javax.swing.JLabel jLabel1;
@@ -811,5 +923,8 @@ public class TEST extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     // End of variables declaration//GEN-END:variables
 }
