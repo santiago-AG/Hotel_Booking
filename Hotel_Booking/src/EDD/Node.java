@@ -46,4 +46,12 @@ public class Node <T>{
         this.pNext = pNext;
     }
     
+    public String toCSV(){
+        return (String) getData();
+    }
+    
+    public String toPrint(){
+        return (String) getData();
+    }
+    
 }
