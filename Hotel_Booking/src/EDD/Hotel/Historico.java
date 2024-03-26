@@ -4,6 +4,7 @@
  */
 package EDD.Hotel;
 import EDD.Node;
+import EDD.Node;
 
 /**
  *
@@ -73,6 +74,20 @@ public class Historico<T> extends Node<T>{
 
     public void setNum_hab(int num_hab) {
         this.num_hab = num_hab;
+    }
+    
+    @Override
+    public String toCSV(){
+        String toPrint = String.valueOf(getData()) + "," + getNombre() + "," + getApellido() + "," + getEmail()+ "," + getGenero()+ "," +getLlegada()+ "," +getNum_hab();
+        return toPrint;
+    }
+    
+    @Override
+    public String toPrint(){
+        String toPrint = "Cedula: "+String.valueOf(getData()) + "\nNombre: " + getNombre() + "\nApellido: " + getApellido() + "\nEmail: " + getEmail()+ "\nGenero: " + getGenero()
+                + "\nLlegada: " +getLlegada()+"\n";
+        
+        return toPrint;
     }
     
 }

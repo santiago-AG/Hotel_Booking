@@ -4,12 +4,13 @@
  */
 package EDD.Hotel;
 
+import EDD.Node;
+
 /**
  *
  * @author santi
  */
-public class Estado {
-    protected int num_hab;
+public class Estado <T> extends Node<T>{
     protected String name;
     protected String apellido;
     protected String email;
@@ -17,8 +18,8 @@ public class Estado {
     protected String celular;
     protected String llegada;
 
-    public Estado(int num_hab, String name, String apellido, String email, String genero, String celular, String llegada) {
-        this.num_hab = num_hab;
+    public Estado(T num_hab, String name, String apellido, String email, String genero, String celular, String llegada) {
+        super(num_hab);
         this.name = name;
         this.apellido = apellido;
         this.email = email;
@@ -26,31 +27,7 @@ public class Estado {
         this.celular = celular;
         this.llegada = llegada;
     }
-    
-    public Estado(int num_hab) {
-        this.num_hab = num_hab;
-        this.name = null;
-        this.apellido = null;
-        this.email = null;
-        this.genero = null;
-        this.celular = null;
-        this.llegada = null;
-    }
 
-
-    /**
-     * @return the num_hab
-     */
-    public int getNum_hab() {
-        return num_hab;
-    }
-
-    /**
-     * @param num_hab the num_hab to set
-     */
-    public void setNum_hab(int num_hab) {
-        this.num_hab = num_hab;
-    }
 
     /**
      * @return the name
@@ -135,5 +112,19 @@ public class Estado {
     public void setLlegada(String llegada) {
         this.llegada = llegada;
     }
+    
+    @Override
+    public String toPrint(){
+        String toPrint = "Numero de Habitacion: "+String.valueOf(getData()) + "\nNombre: " + getName() + "\nApellido: " + getApellido() + "\nEmail: " + getEmail()+ "\nGenero: " + getGenero()
+                +"\nCelular: "+getCelular()+ "\nLlegada: " +getLlegada()+"\n";
+        
+        return toPrint;
+    }
+    
+    public String toCSV(){
+        String toPrint = String.valueOf(getData()) + "." + getName() + "," + getApellido() + "," + getEmail()+ "," + getGenero() +","+getCelular()+ "," +getLlegada();
+        return toPrint;
+    }
+    
     
 }

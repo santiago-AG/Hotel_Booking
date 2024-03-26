@@ -6,88 +6,164 @@ package EDD;
 
 import EDD.Hotel.Estado;
 
+/**
+ *
+ * @author santi
+ */
 public class HashTable {
-
-    private Estado[] tablaEstados;
-    private int size;
-    private Estado dummy; // Objeto especial para marcar estados eliminados
+    protected Estado[] tablaEstados;
+    protected int size;
+ 
+    public HashTable(int num) {
+        this.tablaEstados = new Estado[nextPrime(num)];
+        this.size = 0;
+    }
     
-        public Estado[] getTablaEstados() {
+    public int hash(String texto){
+        int index=0;
+        for (int i = 0; i < texto.length(); i++) {
+            index+=texto.codePointAt(i);
+        }
+        return index%getTablaEstados().length;
+    }
+
+    /**
+     * @return the tablaEstados
+     */
+    public Estado[] getTablaEstados() {
         return tablaEstados;
     }
 
+    /**
+     * @param tablaEstados the tablaEstados to set
+     */
     public void setTablaEstados(Estado[] tablaEstados) {
         this.tablaEstados = tablaEstados;
     }
 
+    /**
+     * @return the size
+     */
     public int getSize() {
         return size;
     }
 
+    /**
+     * @param size the size to set
+     */
     public void setSize(int size) {
         this.size = size;
     }
 
-    public Estado getDummy() {
-        return dummy;
-    }
 
-    public void setDummy(Estado dummy) {
-        this.dummy = dummy;
-    }
+    public boolean isPrime(int n) 
+    { 
+        if (n <= 1) return false; 
+        if (n <= 3) return true; 
 
-    // Constructor
-    public HashTable(int capacidad) {
-        this.size = capacidad;
-        this.tablaEstados = new Estado[capacidad];
-        this.dummy = new Estado(-1); // Suponiendo que -1 es un valor inválido para numeroHabitacion
-    }
+        if (n % 2 == 0 || n % 3 == 0) return false; 
+         
+        for (int i = 5; i * i <= n; i = i + 6) 
+            if (n % i == 0 || n % (i + 2) == 0) 
+            return false; 
+         
+        return true; 
+    } 
+     
+    public int nextPrime(int N) 
+    { 
+        if (N <= 1) 
+            return 2; 
+     
+        int prime = N; 
+        boolean found = false; 
 
-    // Función Hash para determinar el índice en el arreglo
-    private int funcionHash(int numeroHabitacion) {
-        return numeroHabitacion % size;
-    }
-
-    // Insertar un nuevo estado
-    public void insertarEstado(Estado nuevoEstado) {
-        int indice = funcionHash(nuevoEstado.getNum_hab());
-        int contador = 0; // Para evitar un bucle infinito
-
-        // Búsqueda lineal para encontrar un hueco o el final de la tabla
-        while (tablaEstados[indice] != null && tablaEstados[indice].getNum_hab() != nuevoEstado.getNum_hab()&& tablaEstados[indice] != dummy && contador++ < size) {
-            indice = (indice + 1) % size;
+        while (!found) 
+        { 
+            prime++; 
+     
+            if (isPrime(prime)) 
+                found = true; 
+        } 
+     
+        return prime; 
+    } 
+    
+    public void insert(String key, Estado data){
+        int index = hash(key);
+        if (getTablaEstados()[index]==null) {      
+            getTablaEstados()[index] = data;
+        }else{
+            getTablaEstados()[index].setpNext(data);
         }
-
-        // Insertar el nuevo estado si no se encontró uno existente
-        if (tablaEstados[indice] == null || tablaEstados[indice] == dummy) {
-            tablaEstados[indice] = nuevoEstado;
-        } else {
-            System.out.println("¡ERROR! El estado ya está registrado.");
-        }
+        setSize(getSize()+1);
     }
-
-    // Verificar si un estado específico se encuentra en la hash
-    public boolean contieneEstado(Estado estado) {
-        int indice = funcionHash(estado.getNum_hab());
-        int contador = 0;
-
-        while (tablaEstados[indice] != null && contador++ < size) {
-            if (tablaEstados[indice] != dummy && tablaEstados[indice].getNum_hab()== estado.getNum_hab()) {
-                return true; // Encontrado
-            }
-            indice = (indice + 1) % size;
-        }
-
-        return false; // No encontrado
-    }
-
-    // Listar habitaciones disponibles
-    // Nota: Este método podría requerir una implementación específica basada en cómo se definen las habitaciones disponibles
-    public void listarDisponibles(List habitacionesDisponibles) {
-        for (int i = 0; i < size; i++) {
-            if (tablaEstados[i] == null || tablaEstados[i] == dummy) {
-                habitacionesDisponibles.insertLast(i);
+    
+    public Node search(String key){
+        key = key.toLowerCase().replace(" ", "");
+        int index = hash(key); 
+        Estado estado = getTablaEstados()[index];
+        while (estado!=null){
+            String nombre = estado.getName().toLowerCase().replace(" ", "");
+            String apellido = estado.getApellido().toLowerCase().replace(" ", "");
+            String name = nombre+apellido;
+            if (name.equals(key)) {
+                return estado; 
+            }else{
+                estado = (Estado) estado.getpNext();
             }
         }
+        
+        return null;
     }
+    
+    public Node delete(String key){
+        key = key.toLowerCase().replace(" ", "");
+        int index = hash(key); 
+        Estado estado = getTablaEstados()[index];
+            while (estado!=null){
+                String nombre = estado.getName().toLowerCase().replace(" ", "");
+                String apellido = estado.getApellido().toLowerCase().replace(" ", "");
+                String name = nombre+apellido;
+                if (name.equals(key)) {
+                    Estado aux = estado;
+                    getTablaEstados()[index] = (Estado) estado.getpNext();
+                    return aux; 
+                }else{
+                    estado = (Estado) estado.getpNext();
+                }
+            }
+        return null;
+    }
+    
+    public String ocupados(){
+        String habOcupado = "";
+        for (int i = 0; i < getTablaEstados().length; i++) {
+            if (getTablaEstados()[i]!=null) {
+                Node aux = getTablaEstados()[i];
+                habOcupado+=","+aux.getData()+",";
+                while (aux.getpNext()!=null) {
+                    aux=aux.getpNext();
+                    habOcupado+=","+aux.getData()+",";
+                }
+            } 
+        }
+        return habOcupado;
+    }
+    
+    public String toCSV(){
+        String habOcupado = "";
+        for (int i = 0; i < getTablaEstados().length; i++) {
+            if (getTablaEstados()[i]!=null) {
+                Node aux = getTablaEstados()[i];
+                habOcupado+=aux.toCSV()+"\n";
+                while (aux.getpNext()!=null) {
+                    aux=aux.getpNext();
+                    habOcupado+=aux.toCSV()+"\n";
+                }
+            } 
+        }
+        return habOcupado;
+    }
+    
 }

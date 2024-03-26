@@ -5,21 +5,23 @@
 package EDD.Hotel;
 
 import EDD.*;
+import EDD.LNode;
+import EDD.List;
 
 /**
  *
  * @author santi
  */
-public class Habitaciones extends LNode {
+public class Habitacion extends LNode {
     protected String tipo_hab;
     protected int piso;
     protected List huespedes;
 
-    public Habitaciones(int num_hab, String tipo_hab, int piso) {
+    public Habitacion(int num_hab, String tipo_hab, int piso) {
         super(num_hab);
         this.tipo_hab = tipo_hab;
         this.piso = piso;
-        this.huespedes = null;
+        this.huespedes = new List();
     }
     
     /**
@@ -52,4 +54,35 @@ public class Habitaciones extends LNode {
         this.piso = piso;
     }
     
+    @Override
+    public String toCSV(){
+        String toPrint="";
+        Node aux = getHuespedes().getpFirst();
+        
+        while(aux!= null){
+            if (aux.getpNext()!=null) {    
+            toPrint+=aux.toCSV()+"\n";    
+            }else{
+            toPrint+=aux.toCSV();  
+            }
+            aux=aux.getpNext();
+        }
+        return toPrint;
+    }
+    
+    public String printHistory(){
+        String toPrint="";
+        Node aux = getHuespedes().getpFirst();
+        
+        while(aux!= null){
+            if (aux.getpNext()!=null) {    
+            toPrint+=aux.toPrint()+"\n";    
+            }else{
+            toPrint+=aux.toPrint();  
+            }
+            aux=aux.getpNext();
+        } 
+        return toPrint;
+    }
+
 }

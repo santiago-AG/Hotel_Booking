@@ -5,13 +5,14 @@
 package EDD.Hotel;
 
 import EDD.LNode;
+import EDD.LNode;
 
 /**
  *
  * @author santi
  */
 public class Reserva extends LNode{
-    private String nombre;
+    protected String nombre;
     protected String apellido;
     protected String email;
     protected String genero;
@@ -129,4 +130,37 @@ public class Reserva extends LNode{
     public void setSalida(String salida) {
         this.salida = salida;
     }   
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    @Override
+    public String toCSV(){
+        String toPrint =String.valueOf(getKey()) + "," + getNombre() + "," + getApellido() + "," + getEmail()+ "," + getGenero()+"," + getTipo_hab()+ "," +getCelular()+ "," +getLlegada()+ "," +getSalida();
+        return toPrint;
+    }
+    
+    public String toPrint(){
+        String toPrint = "Cedula: "+getKey()
+                    +"\nNombre: "+getNombre()
+                    +"\nApellido: "+getApellido()
+                    +"\nEmail: "+getEmail()
+                    +"\nGenero: "+getGenero()
+                    +"\nTipo de habitacion: "+ getTipo_hab()
+                    + "\nCelular: " +getCelular()
+                    + "\nLlegada: " +getLlegada()
+                    + "\nSaluda: " +getSalida();
+        return toPrint;
+    }
 }
