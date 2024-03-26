@@ -160,7 +160,7 @@ public class Reserva extends LNode{
                     +"\nTipo de habitacion: "+ getTipo_hab()
                     + "\nCelular: " +getCelular()
                     + "\nLlegada: " +getLlegada()
-                    + "\nSaluda: " +getSalida();
+                    + "\nSalida: " +getSalida();
         return toPrint;
     }
 }

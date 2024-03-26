@@ -4,13 +4,7 @@
  */
 package Main;
 
-import EDD.Hotel.Reserva;
-import EDD.*;
 import GUI.*;
-import HotelBooking.Manager;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -25,7 +19,7 @@ public class Main {
     public static void main(String[] args) {   
 //        Manager manager = new Manager();
 //        manager.write_Historico();
-        TEST home = new TEST();
+        GUI home = new GUI();
         home.setVisible(true);       
     }
     

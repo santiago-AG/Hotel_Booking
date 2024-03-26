@@ -17,15 +17,15 @@ import javax.swing.JOptionPane;
  *
  * @author santi
  */
-public class TEST extends javax.swing.JFrame {
+public class GUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form TEST
+     * Creates new form GUI
      */
     Manager manager = new Manager();
     boolean editado =false;
     int xMouse, yMouse;
-    public TEST() {
+    public GUI() {
         initComponents();
         Default.setVisible(true);
         
@@ -287,6 +287,7 @@ public class TEST extends javax.swing.JFrame {
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel11.setText("Reservaciones");
 
+        ReservaText.setForeground(new java.awt.Color(204, 204, 204));
         ReservaText.setText("12.345.678");
         ReservaText.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -364,6 +365,7 @@ public class TEST extends javax.swing.JFrame {
             }
         });
 
+        CheckInText.setForeground(new java.awt.Color(204, 204, 204));
         CheckInText.setText("12.345.678");
         CheckInText.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -426,6 +428,7 @@ public class TEST extends javax.swing.JFrame {
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Ingrese el Nombre y Apellido del cliente");
 
+        CheckOutText.setForeground(new java.awt.Color(204, 204, 204));
         CheckOutText.setText("Nombre Apellido");
         CheckOutText.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -494,6 +497,7 @@ public class TEST extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Ingrese el numeo de habitacion");
 
+        HistorialText.setForeground(new java.awt.Color(204, 204, 204));
         HistorialText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 HistorialTextActionPerformed(evt);
@@ -556,6 +560,7 @@ public class TEST extends javax.swing.JFrame {
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Ingrese el Nombre y Apellido del cliente");
 
+        ClienteText.setForeground(new java.awt.Color(204, 204, 204));
         ClienteText.setText("Nombre Apellido");
         ClienteText.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -917,8 +922,8 @@ public class TEST extends javax.swing.JFrame {
             int ci = Integer.parseInt(inputCI.replace(".","").replace(" ",""));
             Reserva test = (Reserva) manager.getReservas().search(ci,manager.getReservas().getRoot());
             if (test!=null) {
-                CheckInMostrar.setText("El cliente "+test.getNombre()+" "+test.getApellido()+" hizo check in!\n\n"+test.toPrint());
-                manager.getHab_historico().search(ci, manager.getHab_historico().getRoot());
+                String sout = "El cliente "+test.getNombre()+" "+test.getApellido()+" hizo check in!\n";
+                
 
                 int numHab = 1;
                 boolean found = false;
@@ -937,8 +942,11 @@ public class TEST extends javax.swing.JFrame {
                         String apellido = cliente.getApellido().toLowerCase().replace(" ", "");
                         String name = nombre+apellido;
                         manager.getEstados().insert(name, cliente);
+                        sout+="Se le asigno una habitacion de tipo " + hab.getTipo_hab()+" ubicada en el piso "+hab.getPiso()+".";
+                        CheckInMostrar.setText(sout);
                         found = true;
                         editado=true;
+                        
                         }
                     }
                     numHab+=1;
@@ -990,22 +998,35 @@ public class TEST extends javax.swing.JFrame {
 
     private void ReservaTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ReservaTextMousePressed
         // TODO add your handling code here:
-        ReservaText.setText("");
+        if (String.valueOf(ReservaText.getText()).equals("12.345.678")) {
+            ReservaText.setText("");
+            ReservaText.setForeground(Color.black);
+        }
     }//GEN-LAST:event_ReservaTextMousePressed
 
     private void CheckInTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckInTextMousePressed
         // TODO add your handling code here:
+        if (String.valueOf(CheckInText.getText()).equals("12.345.678")){
         CheckInText.setText("");
+        CheckInText.setForeground(Color.black);
+        }
     }//GEN-LAST:event_CheckInTextMousePressed
 
     private void CheckOutTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckOutTextMousePressed
         // TODO add your handling code here:
+        if (String.valueOf(CheckOutText.getText()).equals("Nombre Apellido")) {
         CheckOutText.setText("");
+        CheckOutText.setForeground(Color.black);
+        }
     }//GEN-LAST:event_CheckOutTextMousePressed
 
     private void ClienteTextMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClienteTextMousePressed
         // TODO add your handling code here:
+        if (String.valueOf(ClienteText.getText()).equals("Nombre Apellido")) {
+            
         ClienteText.setText("");
+        ClienteText.setForeground(Color.black);
+        }
     }//GEN-LAST:event_ClienteTextMousePressed
 
     private void jPanel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MousePressed
@@ -1039,20 +1060,21 @@ public class TEST extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TEST.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TEST.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TEST.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TEST.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TEST().setVisible(true);
+                new GUI().setVisible(true);
             }
         });
     }
